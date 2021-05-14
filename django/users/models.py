@@ -17,3 +17,17 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+
+
+class Application(models.Model):
+    user_profile = models.ForeignKey("Profile", on_delete=models.CASCADE)
+    job_title = models.CharField(max_length=50)
+    company = models.CharField(max_length=50)
+    description = models.CharField(max_length=500)
+    url = models.URLField()
+    saved = models.BooleanField(default=False)
+    applied = models.BooleanField(default=False)
+    interviewed = models.BooleanField(default=False)
+    offered = models.BooleanField(default=False)
+    accepted = models.BooleanField(default=False)
+
