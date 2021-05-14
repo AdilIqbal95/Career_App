@@ -1,1 +1,1 @@
-// export { default as ComponentName } from './ComponentName' 
+export { default as Profile } from './Profile' 
