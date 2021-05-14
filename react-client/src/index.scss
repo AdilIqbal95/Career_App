@@ -1,0 +1,16 @@
+// Imports / Variables
+
+@import url('https://fonts.googleapis.com/css2?family=Euphoria+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,200;0,400;0,700;1,200;1,400;1,700&display=swap');
+// font-family: 'Euphoria Script', cursive;
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import './variables';
+
+// Pages
+@import './pages/Home/home';
+
+// Components
+@import './components/Profile/profile';
+
+
