@@ -22,6 +22,9 @@ const Home = () => {
                             <Route path="/search">
                                 <Pages.Search />
                             </Route>
+                            <Route path="/jobbahut">
+                                <Pages.JobbaHut />
+                            </Route>
                         </Switch>
                     </div>
                 </div>
