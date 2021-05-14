@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom';
 import * as Pages from './pages';
-import { Header, Footer } from './layout'
+import { Footer } from './layout'
 
 // import './style.css';
 
@@ -9,7 +9,6 @@ function App(){
 
     return(
       <>
-        <Header />
            <Switch>
           <Route exact path="/">
             <Pages.Home />
