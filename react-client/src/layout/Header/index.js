@@ -6,7 +6,7 @@ const Header = () => {
         <nav role="navigation">
             <NavLink exact to="/jobs" activeClassName="current">My Jobs 💼</NavLink>
             <NavLink to="/search" activeClassName="current">Search 🔍</NavLink>
-            <NavLink to="/jobbashop" activeClassName="current">JobbaHut 🛍</NavLink>
+            <NavLink to="/jobbahut" activeClassName="current">JobbaHut 🛍</NavLink>
         </nav >
     );
 }
