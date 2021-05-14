@@ -4,9 +4,10 @@ import { NavLink } from 'react-router-dom';
 const Header = () => {
     return (
         <nav role="navigation">
-            <NavLink exact to="/" activeClassName="current">Home</NavLink>
-            <NavLink to="/about" activeClassName="current">About</NavLink>
-        </nav>
+            <NavLink exact to="/jobs" activeClassName="current">My Jobs 💼</NavLink>
+            <NavLink to="/search" activeClassName="current">Search 🔍</NavLink>
+            <NavLink to="/jobbashop" activeClassName="current">JobbaHut 🛍</NavLink>
+        </nav >
     );
 }
 
