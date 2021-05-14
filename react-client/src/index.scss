@@ -13,4 +13,9 @@
 // Components
 @import './components/Profile/profile';
 
+// Layout
+@import './layout/layout';
 
+:root {
+    overflow-x: hidden;
+}
