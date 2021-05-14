@@ -6,6 +6,9 @@ from django.dispatch import receiver
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     description = models.TextField(max_length=240, blank=True)
+    profile_image = models.ImageField(upload_to='profiles/image')
+    cv = models.FileField(upload_to='profiles/cv')
+    
 
 # Update user profile if user created
 @receiver(post_save, sender= User)
