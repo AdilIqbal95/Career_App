@@ -4,7 +4,7 @@ const MyJobs = () => {
  
     return (
         <>
-        <div className="jobs-container">
+        <div className="main-container">
             <header>
                 <h1>MyJobs</h1>
             </header>
