@@ -8,6 +8,7 @@ class Profile(models.Model):
     description = models.TextField(max_length=240, blank=True)
     profile_image = models.ImageField(upload_to='profiles/image', blank=True)
     cv = models.FileField(upload_to='profiles/cv', blank=True)
+    points = models.PositiveSmallIntegerField(default=0)
 
     def __str__(self):
         return self.user.username
@@ -39,4 +40,3 @@ class Application(models.Model):
 
     def __str__(self):
         return f"{self.user_profile} | {self.job_title} "
-
