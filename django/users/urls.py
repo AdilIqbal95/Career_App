@@ -5,7 +5,7 @@ from . import views
 
 app_name = 'users'
 urlpatterns = [
-    path('', views.index, name='app-index'), # route for /adoption/
+    path('users/', views.index, name='index'), # route for /adoption/
     path("login/", auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path("logout/", auth_views.LogoutView.as_view(template_name='logout.html'), name='logout'),
     path("register/", views.register, name='register'),
