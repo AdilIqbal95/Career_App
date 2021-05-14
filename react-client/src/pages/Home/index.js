@@ -1,7 +1,6 @@
 import React from 'react';
 import { Sidebar } from '../../layout'
 import { Header } from '../../layout'
-import { MyJobs } from '../index'
 import { Switch, Route } from 'react-router-dom';
 import * as Pages from '../index';
 
@@ -17,8 +16,11 @@ const Home = () => {
                     </div>
                     <div className="row">
                         <Switch>
-                            <Route path="/about">
+                            <Route path="/jobs">
                                 <Pages.MyJobs />
+                            </Route>
+                            <Route path="/search">
+                                <Pages.Search />
                             </Route>
                         </Switch>
                     </div>
