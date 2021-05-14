@@ -1,15 +1,16 @@
 import React from 'react';
-import { Profile } from '../../components'
+import { Sidebar } from '../../layout'
+import { Header } from '../../layout'
 
 const Home = () => {
  
     return (
         <>
-            <header>
-                <h1>Hello World!</h1>
-            </header>
-
-            <Profile />
+            <div className="row" id="homepage">
+            <div className="col-sm-3"><Sidebar /></div>
+            <div className="col"><Header /></div>
+            </div>
+          
         </>
     )
 }
