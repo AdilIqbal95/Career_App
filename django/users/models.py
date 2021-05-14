@@ -9,6 +9,10 @@ class Profile(models.Model):
     profile_image = models.ImageField(upload_to='profiles/image', blank=True)
     cv = models.FileField(upload_to='profiles/cv', blank=True)
 
+    def __str__(self):
+        return self.user.username
+    
+
 # Update user profile if user created
 @receiver(post_save, sender= User)
 def create_user_profile(sender, instance, created, **kwargs):
@@ -32,4 +36,7 @@ class Application(models.Model):
     interviewed = models.BooleanField(default=False)
     offered = models.BooleanField(default=False)
     accepted = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.user_profile} | {self.job_title} "
 
