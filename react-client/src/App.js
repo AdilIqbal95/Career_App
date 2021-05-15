@@ -11,15 +11,13 @@ function App() {
     <>
       {/* <Pages.Home /> */}
       <Switch>
-      <Route exact path="/login">
-          <Pages.LandingPage />
-        </Route>
-      <Route path="/">
+      <Route path="/home">
           <Pages.Home />
         </Route>
-        {/* <Route exact path="/">
-            <Redirect to="/login" />
-            </Route> */}
+      <Route exact path="/">
+          <Pages.LandingPage />
+        </Route>
+     
         <Route>
           <Pages.NotFound />
         </Route>
