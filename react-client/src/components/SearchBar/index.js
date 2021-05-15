@@ -8,21 +8,21 @@ const SearchBar = () => {
           <i id="search" class="fa fa-search" aria-hidden="true"></i>
           <input className= "SearchBar" type='text'></input>
         </div>
-        <div className="Filter1">
-          <select name="cars" id="cars">
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
-          </select>
-        </div>
-        <div className="Filter2">
-          <select name="Animals" id="cars">
-            <option value="Lion">Lion</option>
-            <option value="Tiger">Tiger</option>
-            <option value="Cheetah">Cheetah</option>
-            <option value="Elephant">Elephant</option>
-          </select>
+        <div class="row">
+          <div class="col" id="Filter1">
+            <select name="Filter_1" id="Filter_1">
+              <option value="All">All</option>
+              <option value="Jobs">Jobs</option>
+              <option value="Companies">Companies</option>
+              <option value="Users">Users</option>
+            </select>
+          </div>
+          <div class="col" id="Filter2">
+            <select name="Filter_2" id="Filter_2">
+              <option value="Recent">Recent</option>
+              <option value="Popular">Popular</option>
+            </select>
+          </div>
         </div>
         </>
     )
