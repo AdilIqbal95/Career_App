@@ -1,17 +1,39 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 const Profile = () => {
+
+    const history = useHistory();
+
+    function handleClickToJobbahut() {
+        history.push('/home/jobbahut')
+    }
+
+    function editProfile() {
+        history.push('/home/editprofile')
+    }
 
     return (
         <>
             <div className="profile-container">
                 <main id="profile">
-                    <img src="http://comic-cons.xyz/wp-content/uploads/Star-Wars-avatar-icon-Jabba-the-Hutt.png" class="brand-logo"></img>
-                    <div class="username">Jobba</div>
-                    <div class="inputs">
+                    <img src="http://comic-cons.xyz/wp-content/uploads/Star-Wars-avatar-icon-Jabba-the-Hutt.png" className="profile-pic"></img>
+                    <div className="username">Jobba</div>
+
+                    <div className="game-stats">
+                        <label htmlFor="level"> <h3>10 🏆</h3> </label>
+                        <progress id="level" value="32" max="100"></progress>
+                    </div>
+
+                    <div className="inputs">
                         <label>Bio</label>
                         <input type="bio" placeholder="give a short description" />
-                        <button type="submit">Save</button>
+                        <button onClick={editProfile} type="bio-save">Edit Profile</button>
+                    </div>
+
+                    <div className="coin-stats">
+                        <h3>178💰</h3>
+                        <button onClick={handleClickToJobbahut} type="exchange-coins">Exchange at JobbaHut!</button>
                     </div>
                 </main>
             </div>
