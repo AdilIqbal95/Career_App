@@ -1,10 +1,9 @@
 nav {
-    width: 100vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
     z-index: 1;
-    border: solid 2px purple;
+    padding: 2rem;
 
     a {
         color: rgb(131, 36, 255);

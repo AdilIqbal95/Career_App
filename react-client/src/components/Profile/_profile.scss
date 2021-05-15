@@ -1,7 +1,102 @@
 .profile-container {
-    border: solid 2px blue;
     height: 100vh;
 }
 
 #profile {
+    margin: 1rem;
+    height: 95vh;
+    position: relative;
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #ffffff;
+    // box-shadow: 10px 10px 15px #f1d2f7, -14px -14px 20px white;
+    
+    body {
+    margin: 1rem;
+    width: 100vw;
+    height: 100vh;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    place-items: center;
+    overflow: hidden;
+    }
+
+    .profile-pic {
+    height: 100px;
+    width: 100px;
+    margin: auto;
+    border-radius: 50%;
+    box-sizing: border-box;
+    box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
+    }
+
+
+    .username {
+    margin: 10px;
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: #de70ff;
+    letter-spacing: 1px;
+    }
+
+    label, input {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    }
+
+    label {
+    margin-bottom: 4px;
+    }
+
+    input::placeholder {
+    color: gray;
+    }
+
+    input {
+    background: #ecf0f3;
+    padding: 10px;
+    padding-left: 20px;
+    height: 50px;
+    font-size: 14px;
+    border-radius: 50px;
+    box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+    }
+
+    button {
+    display: block;
+    width: 100%;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    margin-top: 20px;
+    height: 40px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+    transition: 0.5s;
+    }
+
+    button[type="bio-save"] {
+        background: #da9bff;
+    }
+
+    button:hover {
+    box-shadow: none;
+    }
+    
+    .game-stats, .coin-stats, .inputs {
+        margin-top: 3rem;
+    }
+
+    button[type="exchange-coins"] {
+        background: rgb(243, 190, 75);
+    }
 }

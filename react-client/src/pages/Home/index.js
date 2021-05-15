@@ -1,31 +1,39 @@
 import React from 'react';
 import { Sidebar } from '../../layout'
 import { Header } from '../../layout'
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import * as Pages from '../index';
 
 const Home = () => {
+
+    let match = useRouteMatch();
 
     return (
         <>
             <div className="row" id="homepage">
                 <div className="col-sm-3"><Sidebar /></div>
                 <div className="col">
-                    <div clasName="row">
+                    <div className="row">
                         <Header />
                     </div>
                     <div className="row">
                         <Switch>
-                            <Route path="/jobs">
+                            <Route path={`${match.path}/jobs`}>
                                 <Pages.MyJobs />
                             </Route>
-                            <Route path="/search">
+                            <Route path={`${match.path}/search`}>
                                 <Pages.Search />
                             </Route>
-                            <Route path="/jobbahut">
+                            <Route path={`${match.path}/jobbahut`}>
                                 <Pages.JobbaHut />
                             </Route>
+                            <Route path={`${match.path}/editprofile`}>
+                                <Pages.EditProfile />
+                            </Route>
                         </Switch>
+                        
+                       
+
                     </div>
                 </div>
             </div>
