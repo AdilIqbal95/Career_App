@@ -1,6 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const JobbaHut = () => {
+    const [showCollected, setCollected] = useState(true)
+
+    function dailyReward() {
+        return (
+            <>
+                {showCollected ?
+                    <section id="daily-reward">
+                        <h4>Daily Reward 🎁</h4>
+                        <p ><em>"Morning Motivation and add some motivational quote here!"</em></p>
+                        <button onClick={collectReward}>Collect!</button>
+                    </section> : <section id="daily-reward">
+                        <h4>Daily Reward 🎁</h4>
+                        <p>collected!</p>
+                    </section>
+                }
+            </>
+        )
+    }
+
+    function collectReward() {
+        setCollected(false)
+    }
 
     // function Trophies({data}){
     //     return (
@@ -20,11 +42,7 @@ const JobbaHut = () => {
                 <header>
                     <h1>JobbaHut</h1>
                     <div className="first-row-container">
-                        <section id="daily-reward">
-                            <h4>Daily Reward 🎁</h4>
-                            <p ><em>"Morning Motivation and add some motivational quote here!"</em></p>
-                            <button>Collect!</button>
-                        </section>
+                        {dailyReward()}
                         <section id="trophy-collection">
                             <h4>My Trophies 🏆</h4>
                             {/* <Trophies data={trophies} /> */}
