@@ -1,0 +1,23 @@
+#jobbahut {
+
+    .first-row-container {
+        display: flex;
+        align-items: center;
+    }
+
+    #daily-reward, #trophy-collection {
+        background-color: white;
+        display: inline-block;
+        padding: 1.5rem;
+        border-radius: 10px;
+        border: dashed 4px rgb(250, 177, 43);
+        margin: 1rem;
+        min-height: 200px;
+        max-height: 200px;
+    }
+
+    #daily-reward {
+        max-width: 250px;
+    }
+}
+
