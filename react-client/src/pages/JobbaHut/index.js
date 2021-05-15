@@ -1,16 +1,16 @@
 import React from 'react';
 
-const MyJobs = () => {
+const JobbaHut = () => {
  
     return (
         <>
         <div className="main-container">
             <header>
-                <h1>MyJobs</h1>
+                <h1>JobbaHut</h1>
             </header>
         </div>
         </>
     )
 }
 
-export default MyJobs;
+export default JobbaHut;
