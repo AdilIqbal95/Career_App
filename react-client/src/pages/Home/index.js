@@ -27,6 +27,9 @@ const Home = () => {
                             <Route path={`${match.path}/jobbahut`}>
                                 <Pages.JobbaHut />
                             </Route>
+                            <Route path={`${match.path}/editprofile`}>
+                                <Pages.EditProfile />
+                            </Route>
                         </Switch>
                         
                        
