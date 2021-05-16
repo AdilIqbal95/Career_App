@@ -1,7 +1,7 @@
 import React from 'react';
 import { Sidebar } from '../../layout'
 import { Header } from '../../layout'
-import { Switch, Route, useRouteMatch } from 'react-router-dom';
+import { Switch, Route, useRouteMatch, Redirect } from 'react-router-dom';
 import * as Pages from '../index';
 
 const Home = () => {
@@ -32,6 +32,9 @@ const Home = () => {
                             </Route>
                             <Route path={`${match.path}/about`}>
                                 <Pages.About />
+                            </Route>
+                            <Route path={`${match.path}/*`}>
+                                <Redirect to="/home" />
                             </Route>
                         </Switch>
                         
