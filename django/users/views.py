@@ -15,8 +15,6 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-    # @action(detail=True)
-
 
 class GroupViewSet(viewsets.ModelViewSet):
     """
@@ -33,7 +31,6 @@ class ProfileViewSet(viewsets.GenericViewSet, mixins.RetrieveModelMixin, mixins.
     """
 
     def get_queryset(self):
-        print(self.kwargs)
         return Profile.objects.filter(pk=self.kwargs['pk'])
             
     serializer_class = ProfileSerializer
@@ -44,7 +41,6 @@ class ApplicationViewSet(viewsets.ModelViewSet):
     API endpoint that allows user applications to be viewed or edited.
     """
     def get_queryset(self):
-        print(self.kwargs)
         return Application.objects.filter(user_profile=self.kwargs['user_pk'])
 
     serializer_class = ApplicationSerializer
