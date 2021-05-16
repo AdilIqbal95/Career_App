@@ -1,68 +1,47 @@
-from django.core import serializers
-from django.http.response import JsonResponse
-from django.shortcuts import get_object_or_404, render, redirect
-from django.urls import reverse
-from django.contrib import messages
-from django.contrib.auth.decorators import login_required
-from .forms import UserRegistrationForm
-from .models import User, Profile, Application
-
-# def index(req):
-#     return render(req, 'base.html') 
-
-def register(req):
-    if req.method == 'POST':
-        form = UserRegistrationForm(req.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(
-                req, f'ACCESS ISSUED: User {username} granted Level 1 access.')        
-            return redirect('app-index')
-    else:
-        form = UserRegistrationForm()
-    
-    return render(req, 'register.html', {'form': form})
-
-# @login_required
-def users(req):
-    if req.method == 'GET':
-        try:
-            users = User.objects.all().values()
-            return JsonResponse(list(users), safe=False)
-        except Exception:
-            return JsonResponse({'err': 'Could not retrieve users.'})
-    elif req.method == 'POST':
-        try:
-            user = User.objects.create(req.POST)
-            return JsonResponse(user)
-        except Exception:
-            return JsonResponse({'err': 'Could not create new user.'})
-
-def user(req, id):
-    if req.method == 'GET':
-        try:
-            # user = User.objects.get(pk = id)
-            user = get_object_or_404(User, pk = id)
-            return JsonResponse(user)
-        except Exception as err:
-            print(err)
-            return JsonResponse({'err': 'Could not retrieve user.'}, status=404)
-    # elif req.method == 'POST':
-    #     try:
-    #         user = User.objects.create(req.POST)
-    #         return JsonResponse(user)
-    #     except Exception:
-    #         return JsonResponse({'err': 'Could not create new user.'})
+from django.contrib.auth.models import User, Group
+from django.shortcuts import redirect
+from .models import Application, Profile
+from rest_framework import mixins, viewsets, permissions
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from .serializers import ProfileSerializer, UserSerializer, GroupSerializer, ApplicationSerializer
 
 
-@login_required
-def user_applications(req, id):
-    if req.method == 'GET':
-        try:
-            user = User.objects.get(pk=id)
-            applications = Application.objects.filter(user_profile = user.id)
-            return JsonResponse(list(applications), safe=False)
-        except Exception:
-            return JsonResponse({'err': 'Could not retrieve user applications.'})
-    
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class GroupViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class ProfileViewSet(viewsets.GenericViewSet, mixins.RetrieveModelMixin, mixins.UpdateModelMixin):
+    """
+    API endpoint that allows a users profile to be viewed or edited.
+    """
+
+    def get_queryset(self):
+        return Profile.objects.filter(pk=self.kwargs['pk'])
+            
+    serializer_class = ProfileSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class ApplicationViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows user applications to be viewed or edited.
+    """
+    def get_queryset(self):
+        return Application.objects.filter(user_profile=self.kwargs['user_pk'])
+
+    serializer_class = ApplicationSerializer
+    permission_classes = [permissions.IsAuthenticated]

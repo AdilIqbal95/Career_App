@@ -4,10 +4,10 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     description = models.TextField(max_length=240, blank=True)
-    profile_image = models.ImageField(upload_to='profiles/image', blank=True)
-    cv = models.FileField(upload_to='profiles/cv', blank=True)
+    profile_image = models.ImageField(upload_to='profiles/image', blank=True, null=True)
+    cv = models.FileField(upload_to='profiles/cv', blank=True,  null=True)
     points = models.PositiveSmallIntegerField(default=0)
 
     def __str__(self):
