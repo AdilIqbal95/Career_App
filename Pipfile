@@ -5,8 +5,15 @@ name = "pypi"
 
 [packages]
 django = "*"
+psycopg2-binary = "*"
+gunicorn = "*"
+dj-database-url = "*"
+pillow = "*"
+djangorestframework = "*"
+drf-nested-routers = "*"
 
 [dev-packages]
+autopep8 = "*"
 
 [requires]
 python_version = "3.9.5"
