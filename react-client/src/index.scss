@@ -9,6 +9,8 @@
 
 // Pages
 @import './pages/Home/home';
+@import './pages/LandingPage/landingpage';
+@import './pages/JobbaHut/jobbahut';
 
 // Components
 @import './components/Profile/profile';
@@ -18,4 +20,8 @@
 
 :root {
     overflow-x: hidden;
+}
+
+body {
+    background-color: $app-background;
 }

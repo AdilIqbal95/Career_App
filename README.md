@@ -39,17 +39,19 @@ To start up our client:
 
 ## Changelog
 ### Django-API
-1. Install django - start project 'careers' and create app for 'users' 
+1. Install django - start project 'careers' and create app for 'users'   
 
 ### React-Client
-1. Set up react file structure.
-2. Install dependencies and devdependencies 
-3. Add components: Profile, SearchBar, Sidebar and new Pages within /home and a landing page at /
-4. Set up routing, nested routes and 404 routes
-5. Landing page login/register form
+1. Set up react file structure.   
+2. Install dependencies and devdependencies   
+3. Add components: Profile, SearchBar, Sidebar and new Pages within /home and a landing page at /   
+4. Set up routing, nested routes and 404 routes   
+5. Landing page login/register form  
+6. Start stubbing out components and elements for each page  
 
 ## Bugs
 - [x] issue with switch statement / nested switch routes not working. Solved with useRouteMatch
+- [x] login/register path not rendering correctly. Solved with location.reload  
 
 # Wins & Challenges
 
