@@ -1,33 +1,33 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom';
 import * as Pages from './pages';
-import { Header, Footer } from './layout'
+import { Footer } from './layout'
 
-// import './style.css';
+function App() {
 
-function App(){
+  return (
+    <>
+      <Switch>
+      <Route path="/home">
+          <Pages.Home />
+        </Route>
+      <Route exact path="/">
+          <Pages.LandingPage />
+        </Route>
+        <Route path="/login">
+          <Pages.LandingPage />
+        </Route>
+        <Route exact path="/register">
+          <Pages.LandingPage />
+        </Route>
+        <Route>
+          <Pages.NotFound />
+        </Route>
+      </Switch>
+      <Footer />
+    </>
+  );
 
-    return(
-      <>
-        <Header />
-           <Switch>
-          <Route exact path="/">
-            <Pages.Home />
-          </Route>
-          <Route path="/about">
-            <Pages.About />
-          </Route>
-          {/* <Route path="/contact">
-            <Pages.Contact />
-              </Route> */}
-          <Route>
-            <Pages.NotFound />
-          </Route>
-        </Switch>
-        <Footer />
-      </>
-    );
-  
-  };
-  
+};
+
 export default App;

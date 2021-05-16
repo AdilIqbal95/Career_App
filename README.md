@@ -1,9 +1,9 @@
-# Project: Career's Application 
+# Project: JobbaHunt
 
 ## Description 
 A fullstack project....
 
-## Installation and Usage
+# Installation and Usage
 - Clone or download this repo  
 
 - Navigate to root directory of this repository and open the terminal   
@@ -21,27 +21,41 @@ To start up our client:
 `npm install`     
 `npm run dev`    
 
-## Technologies
+# Technologies
 - HTML, CSS, Python, JavaScript   
 ### Dependencies: 
    - Server: django
    
-   - Client: react, router-dom, react-router-dom
+   - Client: react, router-dom, react-router-dom, bootstrap, sass
 
 ### DevDependencies:
    - Server: 
    
-   - Client: 
-## Process 
-1. Install django and start project 'careers' 
-2. Create app for 'users' 
+   - Client: necessary loaders, webpack, babel
+# Process 
+1. Project Plan! Set up Gists, Source of Truth, project Kanban board  
+2. Design and layout plan! MoqUps, dbDiagram, idea proposal slide deck 
+3. Set up file structure for the decided tech stack - django and react
+
+## Changelog
+### Django-API
+1. Install django - start project 'careers' and create app for 'users'   
+
+### React-Client
+1. Set up react file structure.   
+2. Install dependencies and devdependencies   
+3. Add components: Profile, SearchBar, Sidebar and new Pages within /home and a landing page at /   
+4. Set up routing, nested routes and 404 routes   
+5. Landing page login/register form  
+6. Start stubbing out components and elements for each page  
 
 ## Bugs
-- [ ] No bugs here!
+- [x] issue with switch statement / nested switch routes not working. Solved with useRouteMatch
+- [x] login/register path not rendering correctly. Solved with location.reload  
 
-## Wins & Challenges
+# Wins & Challenges
 
 ### Wins
--
+- Having a solid plan from early and great communication between the team!
 ### Challenges
-- 
+- Environment issues with python and setting up a virtual environment 
