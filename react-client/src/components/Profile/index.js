@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { About } from '../../pages';
 
 const Profile = () => {
 
@@ -9,8 +10,12 @@ const Profile = () => {
         history.push('/home/jobbahut')
     }
 
-    function editProfile() {
+    function goToEditProfile() {
         history.push('/home/editprofile')
+    }
+
+    function goToAbout() {
+        history.push('/home/about')
     }
 
     return (
@@ -28,14 +33,18 @@ const Profile = () => {
                     <div className="inputs">
                         <label>Bio</label>
                         <input type="bio" placeholder="give a short description" />
-                        <button onClick={editProfile} type="bio-save">Edit Profile</button>
+                        <button onClick={goToEditProfile} type="bio-save">Edit Profile</button>
                     </div>
 
                     <div className="coin-stats">
                         <h3>178💰</h3>
                         <button onClick={handleClickToJobbahut} type="exchange-coins">Exchange at JobbaHut!</button>
                     </div>
+                    <footer>
+                    <span onClick={goToAbout}>infooo</span>
+                </footer>
                 </main>
+                
             </div>
         </>
     )
