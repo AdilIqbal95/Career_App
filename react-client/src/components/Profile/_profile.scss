@@ -1,5 +1,6 @@
 .profile-container {
     height: 100vh;
+    position: fixed;
 }
 
 #profile {
@@ -9,8 +10,8 @@
     border-radius: 20px;
     padding: 40px;
     box-sizing: border-box;
-    background: #ffffff;
-    // box-shadow: 10px 10px 15px #f1d2f7, -14px -14px 20px white;
+    background: $app-background;
+    box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
     
     body {
     margin: 1rem;
@@ -61,7 +62,7 @@
     }
 
     input {
-    background: #ecf0f3;
+    background: $app-background;
     padding: 10px;
     padding-left: 20px;
     height: 50px;
@@ -92,7 +93,7 @@
     box-shadow: none;
     }
     
-    .game-stats, .coin-stats, .inputs {
+    .game-stats, .coin-stats, .inputs, footer {
         margin-top: 3rem;
     }
 
