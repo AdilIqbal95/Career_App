@@ -1,29 +1,26 @@
-from django.contrib.auth.models import User, Group
+# from django.contrib.auth.models import User, Group
 from django.shortcuts import redirect
-from .models import Application, Profile
+from .models import Application, Profile, User
 from rest_framework import mixins, viewsets, permissions
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from .serializers import ProfileSerializer, UserSerializer, GroupSerializer, ApplicationSerializer
+from .serializers import ProfileSerializer, UserSerializer, ApplicationSerializer
+
+class AuthViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
+    """
+    API endpoint that allows users to be registered
+    """
+    serializer_class = UserSerializer
+    permission_classes = [permissions.AllowAny]
 
 
-class UserViewSet(viewsets.ModelViewSet):
+class UserViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     """
     API endpoint that allows users to be viewed or edited.
     """
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
-
-
-class GroupViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
 
 class ProfileViewSet(viewsets.GenericViewSet, mixins.RetrieveModelMixin, mixins.UpdateModelMixin):
     """
