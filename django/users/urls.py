@@ -24,7 +24,6 @@ urlpatterns = [
     path("", include(applications_router.urls)),
     path("", include(rewards_router.urls)),
     path("users/<pk>/profile/", views.ProfileViewSet.as_view({'get': 'retrieve', 'put': 'update'}), name='user-profile'),
-    path("auth", include("rest_framework.urls", namespace="rest_framework"))
 ]
 
 
