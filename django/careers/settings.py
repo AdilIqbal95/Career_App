@@ -13,6 +13,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import dj_database_url
 from pathlib import Path
 import os
+import environ
+
+# Read .env file
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,6 +46,7 @@ ALLOWED_HOSTS = os.environ.get(
 INSTALLED_APPS = [
     'users',
     'rest_framework',
+    'storages',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -148,10 +154,29 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # LOCAL MEDIA STORAGE
+DEFAULT_FILE_STORAGE = 'careers.storage_backends.MediaStorage'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+# AWS CONNECTION
+AWS_S3_REGION_NAME = 'eu-west-2'
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+
+AWS_ACCESS_KEY_ID = env.str('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env.str('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME='jobba-media'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+
+AWS_PUBLIC_MEDIA_LOCATION = 'media/public'
+DEFAULT_FILE_STORAGE = 'careers.storage_backends.PublicMediaStorage'
+
+AWS_PRIVATE_MEDIA_LOCATION = 'media/private'
+PRIVATE_FILE_STORAGE = 'careers.storage_backends.PrivateMediaStorage'
 
 LOGIN_URL = 'login'
 
