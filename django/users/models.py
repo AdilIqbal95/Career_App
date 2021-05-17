@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rewards.models import Reward
+from careers.storage_backends import PrivateMediaStorage
 
 class User(AbstractUser):
     pass
@@ -11,8 +12,8 @@ class User(AbstractUser):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     description = models.TextField(max_length=240, blank=True)
-    profile_image = models.ImageField(upload_to='profiles/image', blank=True, null=True)
-    cv = models.FileField(upload_to='profiles/cv', blank=True,  null=True)
+    profile_image = models.ImageField(upload_to='profiles/image', blank=True, null=True, storage=PrivateMediaStorage())
+    cv = models.FileField(upload_to='profiles/cv', blank=True,  null=True, storage=PrivateMediaStorage())
     points = models.PositiveSmallIntegerField(default=0)
     rewards = models.ManyToManyField(Reward, through='UserReward')
 
