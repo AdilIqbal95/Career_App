@@ -1,3 +1,4 @@
+// both login and register pages
 #login {
     display: inline-block;
     background-color: white;
@@ -26,6 +27,16 @@
     button {
         margin: 1rem;
         margin-right: .5rem;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    #loading, #error {
+        text-align: center;
+
     }
 
     // .background {
