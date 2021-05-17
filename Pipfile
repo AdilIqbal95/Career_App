@@ -12,6 +12,9 @@ pillow = "*"
 djangorestframework = "*"
 drf-nested-routers = "*"
 djangorestframework-simplejwt = "*"
+boto3 = "*"
+django-storages = "*"
+django-environ = "*"
 
 [dev-packages]
 autopep8 = "*"
