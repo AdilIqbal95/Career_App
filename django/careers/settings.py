@@ -40,6 +40,7 @@ ALLOWED_HOSTS = os.environ.get(
 
 INSTALLED_APPS = [
     'users',
+    'rewards',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
