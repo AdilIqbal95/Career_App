@@ -1,10 +1,11 @@
 # from django.contrib.auth.models import User, Group
 from django.shortcuts import redirect
-from .models import Application, Profile, User
+from .models import Application, Profile, User, UserReward
 from rest_framework import mixins, viewsets, permissions
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from .serializers import ProfileSerializer, UserSerializer, ApplicationSerializer
+from rewards.serializers import RewardSerializer
 
 class AuthViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
     """
@@ -41,4 +42,15 @@ class ApplicationViewSet(viewsets.ModelViewSet):
         return Application.objects.filter(user_profile=self.kwargs['user_pk'])
 
     serializer_class = ApplicationSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class UserRewardViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows user rewards to be added and edited.
+    """
+    def get_queryset(self):
+        user = Profile.objects.get(pk=self.kwargs['user_pk'])
+        return user.rewards.all()
+
+    serializer_class = RewardSerializer
     permission_classes = [permissions.IsAuthenticated]
