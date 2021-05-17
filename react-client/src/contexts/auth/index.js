@@ -19,16 +19,17 @@ export const AuthProvider = ({ children }) => {
     }
 
     const register = userData => {
+        console.log(userData)
         return new Promise(async (resolve, reject) => {
             try {
                 const options = {
                     headers: { 'Content-Type': 'application/json' }
                 }
-                const { data } = await axios.post(`${process.env.API_URL}/users/register`, userData, options)
+                const { data } = await axios.post(`${process.env.API_URL}/api/users/register/`, userData, options)
                 if (data.err){
-                    throw Error(data.err)
+                    throw Error(data.detail)
                 }
-                await login(userData);
+                // await login(userData);
                 resolve('Registration successful')
             } catch (err) {
                 reject(`Registration Error: ${err}`);
@@ -44,7 +45,6 @@ export const AuthProvider = ({ children }) => {
                     headers: { 'Content-Type': 'application/json' }
                 }
                 const { data } = await axios.post(`${process.env.API_URL}/api/users/login/`, userData, options)
-                console.log(data.access)
                 if (!data.access) { 
                     throw new Error(`Login not authorised: ${data.detail}`);
                 }
