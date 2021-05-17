@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 import axios from 'axios';
 
@@ -8,6 +9,7 @@ export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
     const [ currentUser, setCurrentUser ] = useState(getCurrentUser());
+    const history = useHistory();
 
     function getCurrentUser() {
         let user
@@ -59,6 +61,7 @@ export const AuthProvider = ({ children }) => {
     const logout = () => {
         localStorage.clear();
         setCurrentUser(null);
+        history.push('/login')
     }
 
     const auth = { register, login, logout, currentUser }
