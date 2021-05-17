@@ -20,3 +20,8 @@ urlpatterns = [
     path('admin', admin.site.urls),
     path('api/', include('users.urls')),
 ]
+
+from django.views.generic import RedirectView
+urlpatterns += [
+    path('', RedirectView.as_view(url='api/', permanent=True)),
+]
