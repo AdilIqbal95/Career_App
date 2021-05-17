@@ -1,4 +1,5 @@
 # Project: JobbaHunt
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a219f92e-0912-4232-808e-746b42373a08/deploy-status)](https://app.netlify.com/sites/jobbahunt/deploys)
 
 ## Description 
 A fullstack project....
