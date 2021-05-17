@@ -19,7 +19,6 @@ export const AuthProvider = ({ children }) => {
     }
 
     const register = userData => {
-        console.log(userData)
         return new Promise(async (resolve, reject) => {
             try {
                 const options = {
@@ -29,7 +28,6 @@ export const AuthProvider = ({ children }) => {
                 if (data.err){
                     throw Error(data.detail)
                 }
-                // await login(userData);
                 resolve('Registration successful')
             } catch (err) {
                 reject(`Registration Error: ${err}`);
