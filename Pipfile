@@ -12,6 +12,7 @@ pillow = "*"
 djangorestframework = "*"
 drf-nested-routers = "*"
 djangorestframework-simplejwt = "*"
+whitenoise = "*"
 
 [dev-packages]
 autopep8 = "*"
