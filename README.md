@@ -1,5 +1,9 @@
 # Project: JobbaHunt
 
+
+![Heroku](https://pyheroku-badge.herokuapp.com/?app=jobbahunt&style=flat)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## Description 
 A fullstack project....
 
@@ -56,7 +60,7 @@ To start up our client:
 - [x] issue with switch statement / nested switch routes not working. Solved with useRouteMatch
 - [x] login/register path not rendering correctly. Solved with location.reload 
 - [x] /register rendering login form. Solved by refactoring and creating new register page (but i think there could be an even better solution that requires less code lines) 
-- [x] nav bar and side bar is protected from unauthed user, however main section content still shows upon logout. Solved with history.push to login
+- [x] nav bar and side bar is protected from unauthed user, however main section content still shows upon logout. Solved with history.push to login and useState for style visibility change 
  
 # Wins & Challenges
 
