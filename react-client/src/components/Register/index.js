@@ -19,7 +19,7 @@ const Register = () => {
     const formIncomplete = () => Object.values(formData).some(v => !v) || passwordNoMatch();
     const passwordNoMatch = () => formData.password !== formData.passwordConfirmation;
 
-    
+
     const handleRegister = async (e) => {
         e.preventDefault();
         try {
@@ -37,25 +37,25 @@ const Register = () => {
 
     return (
         <>
-        <form aria-label="register" onSubmit={handleRegister}>
-            <label>
-                <input type="text" name="email" value={formData.email} onChange={handleInput} placeholder="email" />
-            </label>
-            <label>
-                <input type="text" name="username" value={formData.username} onChange={handleInput} placeholder="username" />
-            </label>
-            <label>
-                <input type="password" name="password" value={formData.password} onChange={handleInput} placeholder="password" />
-            </label>
-            <label>
-                <input type="password" name="passwordConfirmation" value={formData.passwordConfirmation} onChange={handleInput} placeholder="confirm password" />
-            </label>
-            <div className="button-container">
-                <button type="submit" className={formIncomplete() ? 'disabled' : 'enabled'} disabled={formIncomplete()}>Register</button>
-            </div>
-        </form>
-        { error && <div id="error">{error}</div> }
-        { loading && <div id="loading">Creating account . . .</div> }
+            <form aria-label="register" onSubmit={handleRegister}>
+                <label>
+                    <input type="text" name="email" value={formData.email} onChange={handleInput} placeholder="email" />
+                </label>
+                <label>
+                    <input type="text" name="username" value={formData.username} onChange={handleInput} placeholder="username" />
+                </label>
+                <label>
+                    <input type="password" name="password" value={formData.password} onChange={handleInput} placeholder="password" />
+                </label>
+                <label>
+                    <input type="password" name="passwordConfirmation" value={formData.passwordConfirmation} onChange={handleInput} placeholder="confirm password" />
+                </label>
+                <div className="button-container">
+                    <button role="button" type="submit" className={formIncomplete() ? 'disabled' : 'enabled'} disabled={formIncomplete()}>Register</button>
+                </div>
+            </form>
+            { error && <div id="error">{error}</div>}
+            { loading && <div id="loading">Creating account . . .</div>}
         </>
     )
 }
