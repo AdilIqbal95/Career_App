@@ -1,19 +1,20 @@
 import React from 'react';
-import { SearchBar } from '../../components/'
+import { SearchBar, Results } from '../../components';
 
 const Search = () => {
  
     return (
         <>
-            <div className="row">
-              <div className="col"><SearchBar /></div>
+            <div class="row">
+              <div><SearchBar /></div>
             </div>
-            <div className="row">
-              <div className="col">
+            <div class="row">
+              <div>
                 <h1> Results</h1>
-                <br></br>
+                <div><Results /></div>
               </div>
             </div>
+
             
           
         </>
