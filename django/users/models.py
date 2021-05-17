@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from rewards.models import Reward
 
 class User(AbstractUser):
     pass
@@ -13,6 +14,7 @@ class Profile(models.Model):
     profile_image = models.ImageField(upload_to='profiles/image', blank=True, null=True)
     cv = models.FileField(upload_to='profiles/cv', blank=True,  null=True)
     points = models.PositiveSmallIntegerField(default=0)
+    rewards = models.ManyToManyField(Reward, through='UserReward')
 
     def __str__(self):
         return self.user.username
@@ -44,3 +46,12 @@ class Application(models.Model):
 
     def __str__(self):
         return f"{self.user_profile} | {self.job_title} "
+
+class UserReward(models.Model):
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    reward = models.ForeignKey(Reward, on_delete=models.CASCADE)
+    date_claimed = models.DateField(blank=True, null= True)
+
+    def __str__(self):
+        return str(self.user) + ' | ' + str(self.reward)
+    
