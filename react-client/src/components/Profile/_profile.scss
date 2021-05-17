@@ -1,6 +1,16 @@
 .profile-container {
     height: 100vh;
     position: fixed;
+
+    footer {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+
+        button#logout button#info {
+            width: 50%
+        }
+    }
 }
 
 #profile {
@@ -100,4 +110,6 @@
     button[type="exchange-coins"] {
         background: rgb(243, 190, 75);
     }
+
+    
 }

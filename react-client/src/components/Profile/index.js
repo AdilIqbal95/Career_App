@@ -1,8 +1,10 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { About } from '../../pages';
+import { useAuthContext } from '../../contexts/auth'
 
 const Profile = () => {
+    const { currentUser, logout } = useAuthContext();
 
     const history = useHistory();
 
@@ -41,7 +43,8 @@ const Profile = () => {
                         <button onClick={handleClickToJobbahut} type="exchange-coins">Exchange at JobbaHut!</button>
                     </div>
                     <footer>
-                    <span onClick={goToAbout}>infooo</span>
+                    <button onClick={goToAbout} id="info" role="more info">infooo</button>
+                    <button role="logout" id="logout" onClick={logout}>Logout</button>
                 </footer>
                 </main>
                 
