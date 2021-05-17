@@ -41,6 +41,7 @@ ALLOWED_HOSTS = os.environ.get(
 INSTALLED_APPS = [
     'users',
     'rewards',
+    'corsheaders',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -51,6 +52,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -183,3 +185,8 @@ REST_FRAMEWORK = {
 SIMPLE_JWT = {
     'ROTATE_REFRESH_TOKENS': True,
 }
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
+    "https://jobbahunt.netlify.app"
+]
