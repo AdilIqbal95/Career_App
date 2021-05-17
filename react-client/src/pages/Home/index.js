@@ -1,12 +1,25 @@
-import React from 'react';
-import { Sidebar } from '../../layout'
-import { Header } from '../../layout'
-import { Switch, Route, useRouteMatch, Redirect } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useAuthContext } from '../../contexts/auth';
+import { Switch, Route, useRouteMatch, Redirect, useParams, useHistory } from 'react-router-dom';
 import * as Pages from '../index';
+import { Header, Sidebar } from '../../layout'
 
 const Home = () => {
+    const [ visible, setVisible ] = useState();
+    const { currentUser } = useAuthContext();
+    const { username } = useParams();
 
     let match = useRouteMatch();
+    const history = useHistory();
+
+    useEffect(() => {
+        if (currentUser) {
+            currentUser.username === username 
+            setVisible({visibility: "visible"})
+        } else {
+            setVisible({visibility: "hidden"})
+        }
+    }, [currentUser, username])
 
     return (
         <>
@@ -16,7 +29,7 @@ const Home = () => {
                     <div className="row">
                         <Header />
                     </div>
-                    <div className="row">
+                    <div className="row" style={visible}>
                         <Switch>
                             <Route path={`${match.path}/jobs`}>
                                 <Pages.MyJobs />
@@ -37,8 +50,8 @@ const Home = () => {
                                 <Redirect to="/home" />
                             </Route>
                         </Switch>
-                        
-                       
+
+
 
                     </div>
                 </div>
