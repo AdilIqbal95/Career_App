@@ -1,6 +1,5 @@
 import { screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
-import LandingPage from '.';
+import RegisterLanding from '.';
 
 describe('LandingPage', () => {
     let wrapper;
@@ -11,7 +10,7 @@ describe('LandingPage', () => {
     })
 
     test('it renders a nav tag', () => {
-        renderWithProviders(<LandingPage />)
+        renderWithProviders(<RegisterLanding />);
         const nav = screen.queryByRole('navigation');
         expect(nav).toBeInTheDocument();
     })

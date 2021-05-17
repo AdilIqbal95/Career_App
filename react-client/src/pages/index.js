@@ -6,3 +6,4 @@ export { default as Search } from './Search';
 export { default as JobbaHut } from './JobbaHut';
 export { default as LandingPage } from './LandingPage';
 export { default as EditProfile } from './EditProfile';
+export { default as RegisterLanding } from './RegisterLanding'
