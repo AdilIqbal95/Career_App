@@ -40,6 +40,8 @@ ALLOWED_HOSTS = os.environ.get(
 
 INSTALLED_APPS = [
     'users',
+    'rewards',
+    'corsheaders',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,7 +52,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -147,6 +151,10 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = '/static/'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # LOCAL MEDIA STORAGE
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -177,3 +185,8 @@ REST_FRAMEWORK = {
 SIMPLE_JWT = {
     'ROTATE_REFRESH_TOKENS': True,
 }
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
+    "https://jobbahunt.netlify.app"
+]

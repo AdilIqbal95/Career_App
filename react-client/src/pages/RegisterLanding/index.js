@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory, NavLink } from 'react-router-dom';
-import { Register, Login } from '../../components'
+import { Login, Register } from '../../components'
 
-const LandingPage = () => {
+const RegisterLanding = () => {
     const [registrationStatus, setRegistrationStatus] = useState(false);
     const history = useHistory();
 
@@ -24,11 +24,12 @@ const LandingPage = () => {
         setRegistrationStatus(false)
     }
 
+
     return (
         <>
             <main id="login">
                 {nav()}
-                {registrationStatus ? <Register /> : <Login />}
+                {registrationStatus ? <Login /> : <Register />}
 
                 <div className="background"></div>
 
@@ -37,4 +38,4 @@ const LandingPage = () => {
     )
 }
 
-export default LandingPage;
+export default RegisterLanding;

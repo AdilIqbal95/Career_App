@@ -1,8 +1,8 @@
 import { screen } from '@testing-library/react';
-import Register from '.';
+import Login from '.';
 import 'jest-localstorage-mock';
 
-describe('Register', () => {
+describe('Login', () => {
     let wrapper;
 
     beforeEach(() => {
@@ -10,12 +10,11 @@ describe('Register', () => {
         wrapper = ({ children }) => <AuthProvider>{children}</AuthProvider>
     })
 
-
-    describe('register button', () => {
+    describe('login', () => {
+        renderWithProviders(<Login />)
         test('it renders', () => {
-            renderWithProviders(<Register />)
-            const button = screen.getByRole('button')
-            expect(button.textContent).toContain('Register')
+            const loginForm = screen.getByRole('form', { name: 'login' })
+            expect(loginForm).toBeInTheDocument()
         })
     })
 })
