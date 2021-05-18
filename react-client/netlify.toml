@@ -6,4 +6,4 @@
     to = "/index.html" # to this html page   
     status = 200 # with this status   
 [build.environment]
-  API_URL = "http://jobbahunt.herokuapp.com"
+  API_URL = "https://jobbahunt.herokuapp.com"
