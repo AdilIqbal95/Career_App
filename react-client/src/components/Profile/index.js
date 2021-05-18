@@ -1,10 +1,12 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/auth'
+import { ProfileImage } from '../../components'
 
 const Profile = () => {
     const { currentUser, logout } = useAuthContext();
-    const { editProfPic, setEditProfPic } = useState(true)
+    const [editProfPic, setEditProfPic] = useState(true);
 
     const history = useHistory();
 
@@ -33,12 +35,7 @@ const Profile = () => {
                         {!currentUser ?
                             <h3 style={{ display: "flex", alignItems: "center" }}>nothing to see here!! 🔒</h3> :
                             <>
-                                <img src="http://comic-cons.xyz/wp-content/uploads/Star-Wars-avatar-icon-Jabba-the-Hutt.png" className="profile-pic"></img>
-                                <form >
-                                    <input type="file" id="my-profile-pic" name="profile-pic" />
-                                    {editProfPic ? <button type="submit" onSubmit={handleEditProfile}>save </button> : <button type="submit" onSubmit={handleEditProfile}>edit</button>}
-                                </form>
-
+                                <ProfileImage />
                                 <div className="username">Jobba</div>
 
                                 <div className="game-stats">
