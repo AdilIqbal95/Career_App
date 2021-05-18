@@ -1,5 +1,4 @@
-from django.db.models import fields
-from .models import User, Profile, Application
+from .models import User, Profile, Application, UserReward
 from rest_framework import serializers
 
 class UserSerializer(serializers.ModelSerializer):
@@ -16,11 +15,15 @@ class UserSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
+class UserRewardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserReward
+        fields = ('reward', 'date_claimed')
+
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = '__all__'
-
+        exclude = ('rewards',)
 
 class ApplicationSerializer(serializers.ModelSerializer):
     class Meta:
