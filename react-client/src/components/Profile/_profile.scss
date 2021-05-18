@@ -18,6 +18,21 @@
         flex-direction: column;
         justify-content: space-around;
         height: 100%;
+
+        .pic-wrapper {
+            display: flex;
+            justify-content: center;
+
+            input {
+                position: absolute;
+                margin: 1rem;
+            }
+
+            button {
+                position: absolute;
+            }
+        }
+
     }
 }
 
@@ -53,6 +68,17 @@
     border-radius: 50%;
     box-sizing: border-box;
     box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
+    }
+
+    form.change-profile-pic {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+
+        button {
+            width: auto;
+        }
     }
 
 
