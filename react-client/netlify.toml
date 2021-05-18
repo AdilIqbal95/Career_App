@@ -5,5 +5,5 @@
     from = "/*" # redirect any path  
     to = "/index.html" # to this html page   
     status = 200 # with this status   
-[context.production]
-    environment = { API_URL = "http://jobbahunt.herokuapp.com" }
+[build.environment]
+  API_URL = "http://jobbahunt.herokuapp.com"
