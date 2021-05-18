@@ -30,6 +30,7 @@ const EditProfile = () => {
     }
 
     const handleInput = e => setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    const handleFileInput = e => { setFormData(e.target.files[0]) }
 
     return (
         <>
@@ -63,6 +64,9 @@ const EditProfile = () => {
                     </label>
                     <label className="user-details" htmlFor="desired job title">
                         <input type="desired job title" value={formData.desiredtitle} onChange={handleInput} disabled={disabled} placeholder="🥇 Desired Job Title" />
+                    </label>
+                    <label className="user-details" htmlFor="desired job title">
+                        <input type="file" id="cv" onChange={handleFileInput} name="cv" />
                     </label>
                 </form>
             </main>
