@@ -1,6 +1,6 @@
 .profile-container {
     height: 100vh;
-    position: fixed;
+    position: relative;
 
     footer {
         display: flex;
@@ -11,6 +11,14 @@
             width: 50%
         }
     }
+
+    .wrapper {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+    }
 }
 
 #profile {
@@ -18,7 +26,6 @@
     height: 95vh;
     position: relative;
     border-radius: 20px;
-    padding: 40px;
     box-sizing: border-box;
     background: $app-background;
     box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
