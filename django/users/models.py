@@ -3,7 +3,15 @@ from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rewards.models import Reward
-from careers.storage_backends import PrivateMediaStorage
+def rename(path):
+    def inner(instance, filename):
+        # split extension
+        ext = filename.split('.')[-1]
+        # get filename
+        filename = '{}.{}'.format(instance.pk, ext)
+        # return the whole path to the file
+        return os.path.join(path, filename)
+    return inner
 
 class User(AbstractUser):
     pass
