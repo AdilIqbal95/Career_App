@@ -1,26 +1,14 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/auth'
 import { ProfileImage } from '../../components'
 
-const Profile = () => {
+const Profile = (props) => {
+    console.log(props)
     const { currentUser, logout } = useAuthContext();
     const [editProfPic, setEditProfPic] = useState(true);
 
     const history = useHistory();
-
-    function handleClickToJobbahut() {
-        history.push('/home/jobbahut')
-    }
-
-    function goToEditProfile() {
-        history.push('/home/editprofile')
-    }
-
-    function goToAbout() {
-        history.push('/home/about')
-    }
 
     function handleEditProfile(e) {
         e.preventDefault()
@@ -46,15 +34,15 @@ const Profile = () => {
                                 <div className="inputs">
                                     <label>Bio</label>
                                     <input type="bio" placeholder="give a short description" />
-                                    <button onClick={goToEditProfile} type="bio-save">Edit Profile</button>
+                                    <button onClick={() => { history.push('/home/editprofile') }} type="bio-save">Edit Profile</button>
                                 </div>
 
                                 <div className="coin-stats">
                                     <h3>178💰</h3>
-                                    <button onClick={handleClickToJobbahut} type="exchange-coins">Exchange at JobbaHut!</button>
+                                    <button onClick={() => { history.push('/home/jobbahut') }} type="exchange-coins">Exchange at JobbaHut!</button>
                                 </div>
                                 <footer>
-                                    <button onClick={goToAbout} id="info" role="more info">infooo</button>
+                                    <button onClick={() => { history.push('/home/about') }} id="info" role="more info">infooo</button>
                                     <button role="logout" id="logout" onClick={logout}>Logout</button>
                                 </footer>
                             </>}
