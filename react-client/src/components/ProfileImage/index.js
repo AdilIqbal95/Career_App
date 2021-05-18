@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { useAuthContext } from '../../contexts/auth'
 
 const ProfileImage = () => {
+    const { refresh } = useAuthContext();
+ 
     const [editProfPic, setEditProfPic] = useState(true);
     const [formData, setFormData] = useState({})
     const [userData, setUserData] = useState()
@@ -12,26 +14,6 @@ const ProfileImage = () => {
     function handleEditProfile(e) {
         e.preventDefault()
         setEditProfPic(prev => !prev);
-    }
-
-    const refresh = async () => {
-        try {
-            let refreshToken = localStorage.getItem("refresh")
-            console.log(refreshToken)
-            const options = {
-                headers: { 'Content-Type': 'application/json' }
-            }
-            const { data } = await axios.post(`${process.env.API_URL}/api/users/refresh-token/`, { "refresh": `${refreshToken}` }, options)
-            console.log(data)
-            if (data.err) {
-                throw Error(data.detail)
-            }
-            localStorage.setItem("token", data.access);
-            console.log("success! your access token has been updated")
-        } catch (err) {
-            setLoading(false)
-            console.warn("cannot get new token")
-        }
     }
 
     const handlePicUpdate = async (e) => {
@@ -54,7 +36,7 @@ const ProfileImage = () => {
             }
             await axios.patch(`${process.env.API_URL}/api/users/${userID}/profile/`, data, options)
             setLoading(false)
-            // location.reload()
+            location.reload()
         } catch (err) {
             setLoading(false)
             console.log(err);
@@ -98,7 +80,8 @@ const ProfileImage = () => {
                         <>
                             <button type="submit" > ✔️ </button>
                             <div><input type="file" id="my-profile-pic" onChange={handleInput} name="profile-pic" /></div>
-                            <div style={{ position: "relative" }}><button>x</button></div></>
+                            {/* <div style={{ position: "relative" }}><button>x</button></div> */}
+                            </>
                     }
                 </form>
             </div>

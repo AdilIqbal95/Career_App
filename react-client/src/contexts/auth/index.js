@@ -66,7 +66,27 @@ export const AuthProvider = ({ children }) => {
         history.push('/login')
     }
 
-    const auth = { register, login, logout, currentUser }
+    const refresh = async () => {
+        try {
+            let refreshToken = localStorage.getItem("refresh")
+            console.log(refreshToken)
+            const options = {
+                headers: { 'Content-Type': 'application/json' }
+            }
+            const { data } = await axios.post(`${process.env.API_URL}/api/users/refresh-token/`, { "refresh": `${refreshToken}` }, options)
+            console.log(data)
+            if (data.err) {
+                throw Error(data.detail)
+            }
+            localStorage.setItem("token", data.access);
+            console.log("success! your access token has been updated")
+        } catch (err) {
+            setLoading(false)
+            console.warn("cannot get new token")
+        }
+    }
+
+    const auth = { register, login, logout, refresh, currentUser }
 
     return (
         <AuthContext.Provider value={auth}>
