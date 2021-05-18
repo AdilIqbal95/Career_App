@@ -53,21 +53,30 @@ const ProfileImage = () => {
     const handlePicUpdate = async (e) => {
         e.preventDefault()
         try {
-            setEditProfPic(!editProfPic);
+            const data = new FormData()
+            data.append('profile_image', formData)
+            console.log(data);
+
+            setEditProfPic(prev => !prev);
             setLoading(true)
+
             let token = localStorage.getItem("token")
             let userID = localStorage.getItem("user_id")
-            console.log(userID)
+
             const options = {
-                headers: { 'Content-Type': "multipart/form-data;", "Authorization": `Bearer ${token}` }
-            };
-            const { data } = await axios.patch(`${process.env.API_URL}/api/users/${userID}/profile/`, { "description": "hello, im natalie", "profile_image": formData }, options)
-            alert("you did it! profile picture should be updated soon")
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            }
+
+            await axios.patch(`${process.env.API_URL}/api/users/${userID}/profile/`, data, options)
+            // alert("you did it! profile picture should be updated soon")
             setLoading(false)
             // location.reload()
         } catch (err) {
             setLoading(false)
-            alert("one sec.. authenticating...")
+            console.log(err);
+            // alert("one sec.. authenticating...")
             setError(`❌ Sorry, try again!`)
             refresh()
         }
