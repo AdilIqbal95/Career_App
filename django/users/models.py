@@ -33,7 +33,7 @@ def save_user_profile(sender, instance, **kwargs):
 
 
 class Application(models.Model):
-    user_profile = models.ForeignKey("Profile", on_delete=models.CASCADE)
+    user_profile = models.ForeignKey("Profile", related_name="applications", on_delete=models.CASCADE)
     job_title = models.CharField(max_length=50)
     company = models.CharField(max_length=50)
     description = models.CharField(max_length=500)
