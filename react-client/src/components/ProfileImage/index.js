@@ -70,7 +70,7 @@ const ProfileImage = () => {
                 {error && <div style={{ position: "absolute" }} id="error">{error}</div>}
                 {loading && <div style={{ position: "absolute" }} id="loading">Loading . . .</div>}
                 {userData ? <img className="profile-pic" src={userData.profile_image}></img>
-                    : <img src="http://comic-cons.xyz/wp-content/uploads/Star-Wars-avatar-icon-Jabba-the-Hutt.png" className="profile-pic"></img>}
+                    : <img src="https://i.imgur.com/tfnVE8n.png" className="profile-pic"></img>}
                 <form aria-label="edit profile pic" className="change-profile-pic" onSubmit={handlePicUpdate}>
                     {editProfPic ?
                         <button onClick={handleEditProfile}> 🖋 </button> :

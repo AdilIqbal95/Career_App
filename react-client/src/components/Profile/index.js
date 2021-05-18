@@ -51,7 +51,7 @@ const Profile = () => {
 
                                 <div className="inputs">
                                     {userData && <p>{userData.description}</p>}
-                                    <button onClick={() => { history.push('/home/editprofile') }} type="bio-save">Edit Profile</button>
+                                    <button role="edit profile" onClick={() => { history.push('/home/editprofile') }} type="bio-save">Edit Profile</button>
                                 </div>
 
                                 <div className="coin-stats">
