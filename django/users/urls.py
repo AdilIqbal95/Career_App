@@ -21,7 +21,7 @@ urlpatterns = [
     path('users/refresh-token/', TokenRefreshView.as_view(), name='token-refresh'),
     path("", include(router.urls)),
     path("", include(applications_router.urls)),
-    path("users/<pk>/profile/", views.ProfileViewSet.as_view({'get': 'retrieve', 'put': 'update'}), name='user-profile'),
+    path("users/<pk>/profile/", views.ProfileViewSet.as_view({'get': 'retrieve', 'patch': 'update'}), name='user-profile'),
     path("auth", include("rest_framework.urls", namespace="rest_framework"))
 ]
 
