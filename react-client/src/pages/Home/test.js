@@ -8,36 +8,36 @@ import App from '../../App'
 
 import '@testing-library/jest-dom/extend-expect'
 
+describe('Header', () => {
+    let wrapper;
 
-test('full app rendering/navigating', () => {
-    const history = createMemoryHistory()
-    render(
-        <Router history={history}>
-            <Home />
-        </Router>
-    )
-    // verify page content for expected route
-    // often you'd use a data-testid or role query, but this is also possible
-    expect(screen.getByText(/My Jobs/i)).toBeInTheDocument()
+    beforeEach(() => {
+        jest.resetAllMocks()
+        wrapper = ({ children }) => <AuthProvider>{children}</AuthProvider>
+    })
 
+    test('full app rendering/navigating', () => {
+        const history = createMemoryHistory()
+        renderWithProviders(
+            <Router history={history}>
+                <Home />
+            </Router>
+        )
+        // verify page content for expected route
+        // often you'd use a data-testid or role query, but this is also possible
+        expect(screen.getByText(/log in/i)).toBeInTheDocument()
+
+    })
+
+    test('landing on a bad page', () => {
+        const history = createMemoryHistory()
+        history.push('/some/bad/route')
+        renderWithProviders(
+            <Router history={history}>
+                <App />
+            </Router>
+        )
+
+        expect(screen.getByText(/Oops/i)).toBeInTheDocument()
+    })
 })
-
-test('landing on a bad page', () => {
-    const history = createMemoryHistory()
-    history.push('/some/bad/route')
-    render(
-        <Router history={history}>
-            <App />
-        </Router>
-    )
-
-    expect(screen.getByText(/Oops/i)).toBeInTheDocument()
-})
-
-
-// describe('Home', () => {
-//     test('it shows page header', () => {
-//         render(<Home />, { wrapper: MemoryRouter })
-//         expect(screen.getByRole('heading').textContent).toContain('Welcome');
-//     })
-// })
