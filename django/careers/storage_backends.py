@@ -11,10 +11,10 @@ class LocalMediaStorage(FileSystemStorage):
 
 class PublicMediaStorage(S3Boto3Storage):
     location = settings.AWS_PUBLIC_MEDIA_LOCATION
-    file_overwrite = False
+    file_overwrite = True
 
 class PrivateMediaStorage(S3Boto3Storage):
     location = settings.AWS_PRIVATE_MEDIA_LOCATION
     default_acl = 'private'
-    file_overwrite = False
+    file_overwrite = True
     custom_domain = False
