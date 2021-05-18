@@ -52,6 +52,7 @@ export const AuthProvider = ({ children }) => {
                 localStorage.setItem("refresh", data.refresh)
                 const user = jwt_decode(data.access);
                 setCurrentUser(user);
+                localStorage.setItem("user_id", user.user_id)
                 resolve('Login successful')
             } catch (err) {
                 reject(`Login Error: ${err}`);
