@@ -1,4 +1,3 @@
-from rewards.serializers import RewardSerializer
 from .models import User, Profile, Application, UserReward
 from rest_framework import serializers
 
