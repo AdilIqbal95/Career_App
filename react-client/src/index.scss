@@ -13,6 +13,7 @@
 @import './pages/LandingPage/landingpage';
 @import './pages/JobbaHut/jobbahut';
 @import './pages/EditProfile/editprofile';
+@import './pages/Search/Search';
 
 // Components
 @import './components/Profile/profile';
@@ -36,3 +37,21 @@ body {
         align-items: center;
     }
 }
+
+button {
+    display: block;
+    width: 100%;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    margin-top: 20px;
+    height: 40px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+    transition: 0.5s;
+    }
+
+button:hover {
+    box-shadow: none;
+    }
