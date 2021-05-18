@@ -22,6 +22,9 @@
     box-sizing: border-box;
     background: $app-background;
     box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
     
     body {
     margin: 1rem;
@@ -103,9 +106,9 @@
     box-shadow: none;
     }
     
-    .game-stats, .coin-stats, .inputs, footer {
-        margin-top: 3rem;
-    }
+    // .game-stats, .coin-stats, .inputs, footer {
+    //     margin-top: 3rem;
+    // }
 
     button[type="exchange-coins"] {
         background: rgb(243, 190, 75);
