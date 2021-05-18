@@ -18,7 +18,7 @@ function App() {
           <Pages.LandingPage />
         </Route>
         <Route exact path="/register">
-          <Pages.LandingPage />
+          <Pages.RegisterLanding />
         </Route>
         <Route>
           <Pages.NotFound />

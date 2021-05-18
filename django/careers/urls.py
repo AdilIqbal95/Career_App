@@ -22,3 +22,8 @@ urlpatterns = [
     path('api/', include('rewards.urls')),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework"))
 ]
+
+from django.views.generic import RedirectView
+urlpatterns += [
+    path('', RedirectView.as_view(url='api/', permanent=True)),
+]

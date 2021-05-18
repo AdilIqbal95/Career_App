@@ -31,6 +31,10 @@ class ProfileViewSet(viewsets.GenericViewSet, mixins.RetrieveModelMixin, mixins.
     def get_queryset(self):
         return Profile.objects.filter(pk=self.kwargs['pk'])
 
+    def update(self, request, *args, **kwargs):
+        kwargs['partial'] = True
+        return super().update(request, *args, **kwargs)
+            
     serializer_class = ProfileSerializer
     permission_classes = [permissions.IsAuthenticated]
 
