@@ -30,23 +30,7 @@ const ProfileImage = () => {
             console.log("success! your access token has been updated")
         } catch (err) {
             setLoading(false)
-            setError(`❌ Sorry, try again!`)
-        }
-    }
-
-    const picUpdateRetry = async (e) => {
-        try {
-            let token = localStorage.getItem("token")
-            let userID = localStorage.getItem("user_id")
-            const optionsTwo = {
-                headers: { 'Content-Type': "multipart/form-data;boundary=----WebKitFormBoundaryyrV7KO0BoCBuDbTL", "Authorization": `Bearer ${token}` }
-            };
-            const { data } = await axios.patch(`${process.env.API_URL}/api/users/${userID}/profile/`, { "profile_image": formData }, optionsTwo)
-            console.log(data)
-            alert("your retry worked!")
-        } catch (err) {
-            setLoading(false)
-            setError(`❌ Sorry, try again!`)
+            console.warn("cannot get new token")
         }
     }
 
@@ -68,15 +52,12 @@ const ProfileImage = () => {
                     'Authorization': `Bearer ${token}`
                 }
             }
-
             await axios.patch(`${process.env.API_URL}/api/users/${userID}/profile/`, data, options)
-            // alert("you did it! profile picture should be updated soon")
             setLoading(false)
             // location.reload()
         } catch (err) {
             setLoading(false)
             console.log(err);
-            // alert("one sec.. authenticating...")
             setError(`❌ Sorry, try again!`)
             refresh()
         }
@@ -109,7 +90,7 @@ const ProfileImage = () => {
             <div className="pic-wrapper">
                 {error && <div style={{ position: "absolute" }} id="error">{error}</div>}
                 {loading && <div style={{ position: "absolute" }} id="loading">Loading . . .</div>}
-                {userData ? <img style={{ maxWidth: "130px" }} src={userData.description}></img>
+                {userData ? <img className="profile-pic" src={userData.profile_image}></img>
                     : <img src="http://comic-cons.xyz/wp-content/uploads/Star-Wars-avatar-icon-Jabba-the-Hutt.png" className="profile-pic"></img>}
                 <form aria-label="edit profile pic" className="change-profile-pic" onSubmit={handlePicUpdate}>
                     {editProfPic ?
