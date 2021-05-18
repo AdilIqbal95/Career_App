@@ -49,6 +49,7 @@ export const AuthProvider = ({ children }) => {
                     throw new Error(`Login not authorised: ${data.detail}`);
                 }
                 localStorage.setItem("token", data.access);
+                localStorage.setItem("refresh", data.refresh)
                 const user = jwt_decode(data.access);
                 setCurrentUser(user);
                 resolve('Login successful')
