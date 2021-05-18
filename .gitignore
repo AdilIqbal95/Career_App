@@ -6,4 +6,3 @@ node_modules
 django/media/
 coverage
 .env
-
