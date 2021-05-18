@@ -48,10 +48,9 @@ class Application(models.Model):
         return f"{self.user_profile} | {self.job_title} "
 
 class UserReward(models.Model):
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    reward = models.ForeignKey(Reward, on_delete=models.CASCADE)
-    date_claimed = models.DateField(blank=True, null= True)
+    user = models.ForeignKey(Profile, related_name='user_to_reward', on_delete=models.CASCADE)
+    reward = models.ForeignKey(Reward, related_name='reward_to_user', on_delete=models.CASCADE)
+    date_claimed = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return str(self.user) + ' | ' + str(self.reward)
-    
