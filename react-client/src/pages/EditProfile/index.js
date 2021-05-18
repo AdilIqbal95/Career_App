@@ -10,10 +10,7 @@ const EditProfile = () => {
         desiredtitle: ""
     })
 
-    function handleClick(e) {
-        e.preventDefault()
-        setDisabled(!disabled);
-    }
+    function handleClick(e) { e.preventDefault(); setDisabled(!disabled); }
 
     const handleUpdateProfile = async (e) => {
         e.preventDefault();

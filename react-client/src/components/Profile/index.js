@@ -8,17 +8,11 @@ import { FiLogOut } from "react-icons/fi";
 
 const Profile = () => {
     const { currentUser, logout, refresh } = useAuthContext();
-    const [editProfPic, setEditProfPic] = useState(true);
     const [userData, setUserData] = useState()
 
     const history = useHistory();
 
     profileData()
-
-    function handleEditProfile(e) {
-        e.preventDefault()
-        setEditProfPic(!editProfPic);
-    }
 
     async function profileData() {
         try {
@@ -57,7 +51,7 @@ const Profile = () => {
                                 </div>
 
                                 <div className="coin-stats">
-                                {userData && <h3>{userData.points} 💰</h3>}
+                                    {userData && <h3>{userData.points} 💰</h3>}
                                     <button onClick={() => { history.push('/home/jobbahut') }} type="exchange-coins">Exchange at JobbaHut!</button>
                                 </div>
                                 <footer>
