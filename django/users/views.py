@@ -41,13 +41,22 @@ class ApplicationViewSet(viewsets.ModelViewSet):
     serializer_class = ApplicationSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-class UserRewardViewSet(viewsets.ModelViewSet):
+class UserRewardViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.CreateModelMixin):
     """
     API endpoint that allows user rewards to be added and edited.
     """
-    def get_queryset(self):
-        user = Profile.objects.get(pk=self.kwargs['user_pk'])
-        return user.rewards.all()
+    def get_queryset(self):   
+        return  UserReward.objects.filter(user=self.kwargs['pk'])
 
-    serializer_class = RewardSerializer
+    def perform_create(self, serializer):
+        """
+            Add reward to user and update their points
+        """
+        user=get_object_or_404(Profile, user=self.kwargs['pk'])
+        points = serializer.validated_data.get("reward").point_change
+        user.points += points
+        user.save()
+        serializer.save(user=user)
+
+    serializer_class = UserRewardSerializer
     permission_classes = [permissions.IsAuthenticated]
