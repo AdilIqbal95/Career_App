@@ -30,42 +30,45 @@ const ProfileImage = () => {
             picUpdateRetry()
         } catch (err) {
             setLoading(false)
-            setError(`❌ ${err}`)
+            setError(`❌ Sorry, try again!`)
         }
     }
 
     const picUpdateRetry = async (e) => {
         try {
             let token = localStorage.getItem("token")
+            let userID = localStorage.getItem("user_id")
             const optionsTwo = {
                 headers: { 'Content-Type': "multipart/form-data;boundary=----WebKitFormBoundaryyrV7KO0BoCBuDbTL", "Authorization": `Bearer ${token}` }
             };
-            const { data } = await axios.patch(`${process.env.API_URL}/api/users/1/profile/`, { "profile_image": formData }, optionsTwo)
+            const { data } = await axios.patch(`${process.env.API_URL}/api/users/${userID}/profile/`, { "profile_image": formData }, optionsTwo)
             console.log(data)
             alert("your retry worked!")
         } catch (err) {
             setLoading(false)
-            setError(`❌ ${err}`)
+            setError(`❌ Sorry, try again!`)
         }
     }
 
     const handlePicUpdate = async (e) => {
         e.preventDefault()
         try {
-             setEditProfPic(!editProfPic);
+            setEditProfPic(!editProfPic);
             setLoading(true)
             let token = localStorage.getItem("token")
+            let userID = localStorage.getItem("user_id")
+            console.log(userID)
             const options = {
                 headers: { 'Content-Type': "multipart/form-data;", "Authorization": `Bearer ${token}` }
             };
-            const { data } = await axios.patch(`${process.env.API_URL}/api/users/1/profile/`, { "description": "hello, im natalie", "profile_image": formData }, options)
+            const { data } = await axios.patch(`${process.env.API_URL}/api/users/${userID}/profile/`, { "description": "hello, im natalie", "profile_image": formData }, options)
             alert("you did it! profile picture should be updated soon")
             setLoading(false)
             // location.reload()
         } catch (err) {
             setLoading(false)
             alert("one sec.. authenticating...")
-            setError(`❌ ${err}`)
+            setError(`❌ Sorry, try again!`)
             refresh()
         }
     }
