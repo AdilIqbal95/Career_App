@@ -38,7 +38,6 @@ export const AuthProvider = ({ children }) => {
     }
 
     const login = userData => {
-        console.log(userData)
         return new Promise(async (resolve, reject) => {
             try {
                 const options = {
@@ -69,12 +68,10 @@ export const AuthProvider = ({ children }) => {
     const refresh = async () => {
         try {
             let refreshToken = localStorage.getItem("refresh")
-            console.log(refreshToken)
             const options = {
                 headers: { 'Content-Type': 'application/json' }
             }
             const { data } = await axios.post(`${process.env.API_URL}/api/users/refresh-token/`, { "refresh": `${refreshToken}` }, options)
-            console.log(data)
             if (data.err) {
                 throw Error(data.detail)
             }

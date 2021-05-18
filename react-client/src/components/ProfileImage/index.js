@@ -21,8 +21,6 @@ const ProfileImage = () => {
         try {
             const data = new FormData()
             data.append('profile_image', formData)
-            console.log(data);
-
             setEditProfPic(prev => !prev);
             setLoading(true)
 
@@ -59,7 +57,6 @@ const ProfileImage = () => {
                     headers: { "Authorization": `Bearer ${token}` }
                 };
                 const { data } = await axios.get(`${process.env.API_URL}/api/users/${userID}/profile/`, options)
-                console.log(data)
                 setUserData(data)
             } catch {
                 console.warn("There's an error!!! Cannot fetch user profile details")
