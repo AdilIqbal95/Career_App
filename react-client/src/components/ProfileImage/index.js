@@ -51,6 +51,7 @@ const ProfileImage = () => {
 
     useEffect(() => {
         async function profileData() {
+            await refresh()
             try {
                 let token = localStorage.getItem("token")
                 let userID = localStorage.getItem("user_id")
@@ -62,7 +63,6 @@ const ProfileImage = () => {
                 setUserData(data)
             } catch {
                 console.warn("There's an error!!! Cannot fetch user profile details")
-                refresh()
             }
         } profileData()
     }, []);
