@@ -1,11 +1,8 @@
 # from django.contrib.auth.models import User, Group
-from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404, redirect
 from .models import Application, Profile, User, UserReward
-from rest_framework import mixins, viewsets, permissions
-from rest_framework.decorators import action
-from rest_framework.response import Response
-from .serializers import ProfileSerializer, UserSerializer, ApplicationSerializer
-from rewards.serializers import RewardSerializer
+from rest_framework import mixins, request, views, viewsets, permissions
+from .serializers import ProfileSerializer, UserRewardSerializer, UserSerializer, ApplicationSerializer
 
 class AuthViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
     """
