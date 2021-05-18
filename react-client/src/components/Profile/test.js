@@ -1,12 +1,23 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import { AuthProvider } from '.'
 import Profile from '.';
 
+const TestComp = () => <h1>Just Testing</h1>
 
 describe('Profile', () => {
-    test('it shows a profile pic', () => {
-        render(<Profile />)
-        const profilePic = screen.queryByRole('img');
-        expect(profilePic).toBeInTheDocument();
+    describe('LoggedOutRoute', () => {
+        test('it renders the route if no-one has logged in', () => {
+            renderWithProviders(<Profile component={TestComp} />)
+            const publicHeading = screen.getByText("Just Testing")
+            expect(publicHeading).toBeInTheDocument()
+        })
     })
 
+    describe('PrivateRoute', () => {
+        test('it does not render the route if no-one has logged in', () => {
+            renderWithProviders(<Profile component={TestComp} />)
+            const privateHeading = screen.queryByText("Just Testing")
+            expect(privateHeading).not.toBeInTheDocument()
+        })
+    })
 })
