@@ -28,4 +28,4 @@ class ProfileSerializer(serializers.ModelSerializer):
 class ApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Application
-        fields = '__all__'
+        exclude = ('user',)
