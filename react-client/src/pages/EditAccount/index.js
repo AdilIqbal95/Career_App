@@ -6,10 +6,10 @@ const EditAccount = () => {
     return (
         <>
             <header>
-                <h1>Edit Account Details</h1>
+                <h1>Edit Your Account</h1>
             </header>
 
-            <main>
+            <main className="main-container" id="editaccount">
                 <UpdateAccForm />
             </main>
         </>
