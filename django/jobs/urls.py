@@ -4,7 +4,7 @@ from rest_framework_nested import routers
 
 
 urlpatterns = [
-    path("jobs/", views.ListJobs.as_view()),
+    path("jobs", views.ListJobs.as_view()),
 ]
 
 
