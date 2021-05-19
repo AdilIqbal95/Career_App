@@ -1,0 +1,24 @@
+{% extends 'base_email.html' %}
+
+{% block content %}
+    <h1>Welcome {{ user }}</h1>
+    <p>Thanks for letting us be part of your job search!</p>
+    <p>Here are some top tips for getting started on JobbaHunt:</p>
+    <ul>
+        <li>Get your first Jobbas (our brilliantly named point system) by uploading a profile picture and CV!</li>
+        <li>Head over to the search page and save some jobs you want to apply for!</li>
+        <li>Progressing your applications gets you Jobbas!</li>
+        <li>Use your Jobbas in the JobbaHut to get exclusive rewards that can help you in your job hunt!</li>
+    </ul>
+
+    <p>Head over to <a href="https://jobbahunt.netlify.app/home"> your profile </a> and login to get started!</p>
+
+    <p>Happy hunting,
+     <strong>   
+     JobbaHunt
+    </strong>
+    </p>
+   
+
+{% endblock content %}
+    
