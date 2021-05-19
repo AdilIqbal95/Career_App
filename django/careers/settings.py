@@ -211,7 +211,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticatedOrReadOnly'
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
-         'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
@@ -227,3 +227,11 @@ CORS_ALLOWED_ORIGINS = [
 
 # INDEED API ACCESS
 REED_API_KEY = env.str('REED_API_KEY')
+
+# EMAIL SETTINGS
+EMAIL_HOST = "smtp.mailtrap.io"
+EMAIL_PORT = 2525
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "572dfc63010f55"
+EMAIL_HOST_PASSWORD = "98106db6244cd3"
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
