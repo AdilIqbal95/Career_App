@@ -23,7 +23,7 @@ urlpatterns = [
     path("", include(router.urls)),
     # path("", include(rewards_router.urls)),
     path("", include(applications_router.urls)),
-    path("users/<pk>/profile/", views.ProfileViewSet.as_view({'get': 'retrieve', 'put': 'update'}), name='user-profile'),
+    path("users/<pk>/profile/", views.ProfileViewSet.as_view({'get': 'retrieve', 'patch': 'update'}), name='user-profile'),
     path("users/<pk>/rewards/", views.UserRewardViewSet.as_view({'get': 'list', 'post': 'create'}), name='user-rewards'),
 ]
 
