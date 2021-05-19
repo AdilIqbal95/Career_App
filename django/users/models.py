@@ -1,9 +1,12 @@
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rewards.models import Reward
 from .utils import Rename, select_storage
+from django.core.mail import send_mail
+from django.template.loader import render_to_string 
 
 class User(AbstractUser):
     pass
@@ -28,6 +31,21 @@ class Profile(models.Model):
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
+
+        
+        msg = f"""Welcome {instance.username}, thanks for letting us be part of your job search!"""
+        context = {
+            'user': instance.username,
+            'message': msg,
+        }
+
+        send_mail(
+            'Welcome to JobbaHunt!', 
+            msg,
+            settings.DEFAULT_FROM_EMAIL,
+            [{instance.email}],
+            html_message = render_to_string('register_email.html', context),
+        )
 
 # Update user profile if user is saved
 @receiver(post_save, sender=User)
