@@ -3,16 +3,11 @@ import React, { useEffect, useState } from "react";
 import { useAuthContext } from '../../contexts/auth'
 import data from "../../temp_data";
 
-function RewardCard({reward}){
-  
+function RewardCard({ reward }) {
+
   const [collected, setCollected] = useState(false)
-  // const displayRewards = () => {
-  //   return (
-  //     <>
-  //     </>
-  //   )
-  // }
-  
+  const [available, setAvailable] = useState(true);
+
   async function collectReward() {
 
     let token = localStorage.getItem("token")
@@ -24,14 +19,11 @@ function RewardCard({reward}){
     try {
       await axios.post(`${process.env.API_URL}/api/users/${userID}/rewards/`, { "reward": reward.id }, options)
       setCollected(true)
+    } catch (error) {
+      setAvailable(false)
+    }
+
   }
-
-  // <section className="col" id="reward1">
-  //                           <h4>{reward.title}</h4>
-  //                           <p>collected!</p>
-  //                       </section>
-
-  // console.log('Rewards are: ',rewards)
 
   return (
 
@@ -43,8 +35,6 @@ function RewardCard({reward}){
           {reward.point_change > 0
             ? `+${reward.point_change}`
             : `-${reward.point_change}`}</p>
-        {collected ?
-          {collected ? 
         {collected ?
           <p>Collected!</p>
           : <button disabled={!available} onClick={collectReward}>Collect!</button>}
