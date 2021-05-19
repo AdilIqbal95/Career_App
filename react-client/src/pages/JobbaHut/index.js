@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {RewardCard} from '../../components';
 
 const JobbaHut = () => {
     const [showCollected, setCollected] = useState(true)
@@ -41,14 +42,20 @@ const JobbaHut = () => {
             <div className="main-container" id="jobbahut">
                 <header>
                     <h1>JobbaHut</h1>
-                    <div className="first-row-container">
-                        {dailyReward()}
-                        <section id="trophy-collection">
+                    <div class="row">
+                        <section class="col">
+                            {dailyReward()}
+                        </section>
+                        <section class ="col"id="trophy-collection">
                             <h4>My Trophies 🏆</h4>
                             {/* <Trophies data={trophies} /> */}
-
                         </section>
                     </div>
+                    <div class="row">
+                        <RewardCard/>
+                    </div>
+
+                    
                 </header>
 
             </div>

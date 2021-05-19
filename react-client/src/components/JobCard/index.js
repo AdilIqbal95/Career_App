@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-function JobCard({ job}){
+function JobCard({job}){
     
  
   return (
       <div role="listitem">
-        {/* {id && <a href={`/albums/${id}`}>more info...</a>}<Like /> */}
         <h2 style={{marginTop: "1rem"}}>{job.Role}|{job.Company}</h2>
         <p>{job.Description}</p>
       </div>
