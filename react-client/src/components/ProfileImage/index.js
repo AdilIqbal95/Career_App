@@ -34,7 +34,6 @@ const ProfileImage = () => {
             }
             await axios.patch(`${process.env.API_URL}/api/users/${userID}/profile/`, data, options)
             setLoading(false)
-            location.reload()
         } catch (err) {
             setLoading(false)
             console.log(err);
@@ -64,7 +63,7 @@ const ProfileImage = () => {
                 console.warn("There's an error!!! Cannot fetch user profile details")
             }
         } profileData()
-    }, []);
+    }, [loading]);
 
     return (
         <>
