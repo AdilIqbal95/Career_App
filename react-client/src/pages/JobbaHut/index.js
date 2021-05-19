@@ -40,25 +40,19 @@ const JobbaHut = () => {
     return (
         <>
             <div className="main-container" id="jobbahut">
-                <header>
                     <h1>JobbaHut</h1>
-                    <div className="row">
-                        <section class="col">
+                    {/* <div className="row">
+                        <section className="col">
                             {dailyReward()}
                         </section>
-                    </div>
-                    <div className="row">
-                        <RewardCard/>
-                    </div>
+                    </div> */}
+                    <RewardCard/>
                     <div className="row">
                         <section className ="col"id="trophy-collection">
                             <h4>My Trophies 🏆</h4>
                             {/* <Trophies data={trophies} /> */}
                         </section>
                     </div>
-
-                    
-                </header>
 
             </div>
         </>
