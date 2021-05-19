@@ -23,12 +23,12 @@ const MyJobs = () => {
                 setMyJobs(data)
             } catch {
                 console.warn("There's an error!!! Cannot fetch user jobs!")
-                setError('Error loading feed')
+                setError('❌ Error loading feed')
             }
         } fetchMyJobs();
     }, []);
 
-    const renderMyJobs = () => myJobs.map((job) => (<ApplicationCard applied={job} />))
+    const renderMyJobs = () => myJobs.map((job) => (<ApplicationCard job={job} />))
 
     return (
         <>
