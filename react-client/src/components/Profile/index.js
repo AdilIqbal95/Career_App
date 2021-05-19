@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/auth'
@@ -12,22 +12,22 @@ const Profile = () => {
 
     const history = useHistory();
 
-    profileData()
-
-    async function profileData() {
-        try {
-            // await refresh()
-            let token = localStorage.getItem("token")
-            let userID = localStorage.getItem("user_id")
-            const options = {
-                headers: { "Authorization": `Bearer ${token}` }
-            };
-            const { data } = await axios.get(`${process.env.API_URL}/api/users/${userID}/profile/`, options)
-            setUserData(data)
-        } catch {
-            console.warn("There's an error!!! Cannot fetch user profile details")
-        }
-    }
+    useEffect(() => {
+        async function profileData() {
+            try {
+                // await refresh()
+                let token = localStorage.getItem("token")
+                let userID = localStorage.getItem("user_id")
+                const options = {
+                    headers: { "Authorization": `Bearer ${token}` }
+                };
+                const { data } = await axios.get(`${process.env.API_URL}/api/users/${userID}/profile/`, options)
+                setUserData(data)
+            } catch {
+                console.warn("There's an error!!! Cannot fetch user profile details")
+            }
+        } profileData()
+    }, []);
 
     return (
         <>
