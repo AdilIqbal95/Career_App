@@ -35,7 +35,7 @@ const UpdateAccForm = () => {
         <>
             <form aria-label="update-account" id="update-acc-form" onSubmit={handleUpdateAccount}>
                 <div className="button-container">
-                    {disabled ? <button type="submit" onClick={handleClick}>Edit 🖋</button> :
+                    {disabled ? <button type="button" onClick={handleClick}>Edit 🖋</button> :
                         <button type="submit" onClick={handleClick} className={formIncomplete() ? 'disabled' : 'enabled'} disabled={formIncomplete()}>Save! ✔️</button>}
                     <button onClick={() => { history.push('/home/editprofile') }}>Edit Profile</button>
                 </div>
@@ -43,10 +43,10 @@ const UpdateAccForm = () => {
                     <input type="email" disabled={disabled} placeholder="email" name="email" onChange={handleInput} value={formData.email} />
                 </label>
                 <label>
-                    <input type="first_name" disabled={disabled} placeholder="first_name" name="first_name" onChange={handleInput} value={formData.first_name} />
+                    <input type="first_name" disabled={disabled} placeholder="First Name" name="first_name" onChange={handleInput} value={formData.first_name} />
                 </label>
                 <label>
-                    <input type="last_name" disabled={disabled} placeholder="last_name" name="last_name" onChange={handleInput} value={formData.last_name} />
+                    <input type="last_name" disabled={disabled} placeholder="Last Name" name="last_name" onChange={handleInput} value={formData.last_name} />
                 </label>
             </form>
             { error && <div id="error">{error}</div>}
