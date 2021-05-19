@@ -16,10 +16,14 @@ class AuthViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
     permission_classes = [permissions.AllowAny]
 
 
-class UserViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+class UserViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.UpdateModelMixin):
     """
     API endpoint that allows users to be viewed or edited.
     """
+    def update(self, request, *args, **kwargs):
+        kwargs['partial'] = True
+        return super().update(request, *args, **kwargs)
+            
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
