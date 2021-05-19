@@ -8,7 +8,8 @@ import { FiLogOut } from "react-icons/fi";
 
 const Profile = () => {
     const { currentUser, logout, refresh } = useAuthContext();
-    const [userData, setUserData] = useState()
+    const [userData, setUserData] = useState();
+    const [username, setUsername] = useState(localStorage.getItem('username'));
 
     const history = useHistory();
 
@@ -38,17 +39,18 @@ const Profile = () => {
                             <h3 style={{ display: "flex", alignItems: "center" }}>nothing to see here!! 🔒</h3> :
                             <>
                                 <ProfileImage />
-                                <div className="username">Jobba</div>
+
+                                <div className="inputs">
+                                    {username && <h3 className="username">{username}</h3>}
+                                    {userData && <p>{userData.description}</p>}
+                                    <button role="edit profile" onClick={() => { history.push('/home/editprofile') }} type="bio-save">Edit Profile</button>
+                                </div>
 
                                 <div className="game-stats">
                                     <label htmlFor="level"> <h3>1 🏆</h3> </label>
                                     <progress id="level" value="32" max="100"></progress>
                                 </div>
 
-                                <div className="inputs">
-                                    {userData && <p>{userData.description}</p>}
-                                    <button role="edit profile" onClick={() => { history.push('/home/editprofile') }} type="bio-save">Edit Profile</button>
-                                </div>
 
                                 <div className="coin-stats">
                                     {userData && <h3>{userData.points} 💰</h3>}

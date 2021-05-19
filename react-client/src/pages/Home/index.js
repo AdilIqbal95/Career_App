@@ -29,7 +29,7 @@ const Home = () => {
                     <div className="row">
                         <Header />
                     </div>
-                    <div className="row" style={visible}>
+                    <div style={visible}>
                         <Switch>
                             <Route path={`${match.path}/jobs`}>
                                 <Pages.MyJobs />
