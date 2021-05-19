@@ -41,6 +41,8 @@ const ProfileImage = () => {
             setError(`❌ Sorry, try again!`)
             refresh()
         }
+        // update picture reward
+        await axios.post(`${process.env.API_URL}/api/users/${userID}/rewards/`, {'reward': 3}, options)
     }
 
     const handleInput = e => {
