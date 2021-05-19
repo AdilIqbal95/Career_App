@@ -24,6 +24,8 @@ const EditProfile = () => {
     const handleUpdateProfile = async (e) => {
         e.preventDefault();
         await refresh()
+        let token = localStorage.getItem("token")
+        let userID = localStorage.getItem("user_id")
         try {
             const data = new FormData()
             data.append('cv', cvData)
@@ -31,17 +33,22 @@ const EditProfile = () => {
             data.append('education', formData.education)
             data.append('previous_experience', formData.previous_experience)
             data.append('desired_job', formData.desired_job)
-            let token = localStorage.getItem("token")
-            let userID = localStorage.getItem("user_id")
+            
             const options = {
                 headers: { "Authorization": `Bearer ${token}` }
             };
             await axios.patch(`${process.env.API_URL}/api/users/${userID}/profile/`, data, options)
             alert('profile updated!')
-            location.reload()
+
+            // add uploaded CV reward
+            try {
+                await axios.post(`${process.env.API_URL}/api/users/${userID}/rewards/`, {'reward': 1}, options)    
+            } catch (error) { }
         } catch (err) {
             setError(`❌ Sorry, try again! ${err}`)
         }
+    
+    
     }
 
     const handleInput = e => setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -63,8 +70,8 @@ const EditProfile = () => {
                         <input type="description" name="description" autoComplete="off" value={formData.description} onChange={handleInput} disabled={disabled} placeholder="🖊 Add a bio" />
                     </label>
                     <label className="user-details" htmlFor="education">
-                        <select type="education" name="education" disabled={disabled} onChange={handleInput}>
-                            <option value="0" selected disabled hidden>📚 Highest Level of Education</option>
+                        <select type="education" name="education" disabled={disabled} value={formData.education} onChange={handleInput}>
+                            <option value="0" disabled hidden>📚 Highest Level of Education</option>
                             <option value="1">None</option>
                             <option value="2">A-Level or equivalent</option>
                             <option value="3">Bachelor's</option>
