@@ -35,6 +35,7 @@ const EditProfile = () => {
             await axios.patch(`${process.env.API_URL}/api/users/${userID}/profile/`, data, options)
             setUserData(data)
             alert('profile updated!')
+            location.reload()
         } catch (err) {
             setError(`❌ Sorry, try again!`)
         }
@@ -51,8 +52,9 @@ const EditProfile = () => {
             <main className="main-container" id="editprofile">
                 <form aria-label="edit-profile" id="profile-form" onSubmit={handleUpdateProfile}>
                     <div className="button-container">
-                        {disabled ? <button type="submit" onClick={handleClick}>Edit 🖋</button> :
+                        {disabled ? <button type="button" onClick={handleClick}>Edit 🖋</button> :
                             <button type="submit" onClick={handleClick} className={formIncomplete() ? 'disabled' : 'enabled'} disabled={formIncomplete()}>Save! ✔️</button>}
+                                <button onClick={() => { history.push('/home/editaccount') }}>Edit Account</button>
                     </div>
                     <label className="user-details" htmlFor="description">
                         <input type="description" name="description" autoComplete="off" value={formData.description} onChange={handleInput} disabled={disabled} placeholder="🖊 Add a bio" />
