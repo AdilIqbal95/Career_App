@@ -20,6 +20,7 @@
 @import './components/Profile/profile';
 @import './components/SearchBar/SearchBar';
 @import './components/UpdateAccForm/updateaccform';
+@import './components/ApplicationCard/applicationcard';
 
 // Layout
 @import './layout/layout';
@@ -64,3 +65,10 @@ h1, button {
     font-family: 'VT323', monospace;
 }
 
+h1 {
+    letter-spacing: 3px;
+}
+
+header {
+    margin-bottom: 1rem;
+}
