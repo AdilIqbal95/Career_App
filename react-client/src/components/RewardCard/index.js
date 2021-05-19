@@ -26,6 +26,7 @@ function RewardCard(){
     } catch (err) {
       console.error(err.message)
     }
+  
   }
   
   useEffect(() => {
@@ -41,6 +42,7 @@ function RewardCard(){
       <p>{title}</p>
     </section>
   );
-  }
+
+}
 
 export default RewardCard;
