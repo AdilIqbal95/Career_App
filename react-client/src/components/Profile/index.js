@@ -40,9 +40,9 @@ const Profile = () => {
                             <>
                                 <ProfileImage />
 
-                                <div className="inputs">
+                                <div className="inputs" style={{textAlign: "center"}}>
                                     {username && <h3 className="username">{username}</h3>}
-                                    {userData && <p>{userData.description}</p>}
+                                    {userData ? <p>{userData.description}</p> : <p>Add a bio! ⤵️</p>}
                                     <button role="edit profile" onClick={() => { history.push('/home/editprofile') }} type="bio-save">Edit Profile</button>
                                 </div>
 
@@ -52,8 +52,8 @@ const Profile = () => {
                                 </div>
 
 
-                                <div className="coin-stats">
-                                    {userData && <h3>{userData.points} 💰</h3>}
+                                <div className="coin-stats" style={{textAlign: "center"}}>
+                                    {userData ? <h3 >💰 {userData.points} Jobbas 💰</h3> : <p>Loading, please wait! 🙏🏻</p>}
                                     <button onClick={() => { history.push('/home/jobbahut') }} type="exchange-coins">Exchange at JobbaHut!</button>
                                 </div>
                                 <footer>
