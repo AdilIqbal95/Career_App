@@ -1,19 +1,21 @@
 #jobbahut {
+    overflow-y: auto;
+    display: flex; 
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 
-    // .first-row-container {
-    //     display: flex;
-    //     align-items: center;
-    // }
-
-    #daily-reward, #trophy-collection, #reward1 {
+    #daily-reward, #trophy-collection, .reward {
         background-color: white;
         display: inline-block;
         padding: 1.5rem;
         border-radius: 10px;
         border: dashed 4px rgb(250, 177, 43);
         margin: 1rem;
-        min-height: 220px;
-        max-height: 220px;
+        width: 30%;
+        min-height: 180px;
+        max-height: 180px;
     }
 
     #daily-reward {

@@ -27,7 +27,7 @@ function RewardCard({reward}){
   return (
  
       <>
-        <section className="col" id="reward1">
+        <section className="reward">
           <h4>{reward.title}</h4>
           <p>{reward.description}</p>
           

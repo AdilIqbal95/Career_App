@@ -64,26 +64,20 @@ const JobbaHut = () => {
     // }
 
     return (
-        <>
+        <>    <h1>JobbaHut</h1>
             <div className="main-container" id="jobbahut">
-                    <h1>JobbaHut</h1>
-
+            
                     {/* <div className="row">
                         <section className="col">
                             {dailyReward()}
                         </section>
                     </div> */}
-                    <div className="row" id="reward1">
+                  
                         {rewards.map(reward => (
                         <RewardCard reward={reward}/>
                         ))}
-                    </div>
-                    <div className="row">
-                        <section className ="col"id="trophy-collection">
-                            <h4>My Trophies 🏆</h4>
-                            {/* <Trophies data={trophies} /> */}
-                        </section>
-                    </div>
+              
+                    
             </div>
         </>
     )
