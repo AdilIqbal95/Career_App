@@ -6,7 +6,7 @@ const UpdateAccForm = () => {
     let history = useHistory();
     const { refresh } = useAuthContext();
     const [disabled, setDisabled] = useState(true);
-    const [formData, setFormData] = useState({ username: "", password: "" })
+    const [formData, setFormData] = useState({ email: "", first_name: "", last_name: "" })
     const [error, setError] = useState();
 
     const handleInput = e => setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
@@ -17,6 +17,7 @@ const UpdateAccForm = () => {
     const handleUpdateAccount = async (e) => {
         e.preventDefault()
         try {
+            await refresh()
             let token = localStorage.getItem("token")
             let userID = localStorage.getItem("user_id")
             const options = {
@@ -39,10 +40,13 @@ const UpdateAccForm = () => {
                     <button onClick={() => { history.push('/home/editprofile') }}>Edit Profile</button>
                 </div>
                 <label>
-                    <input type="username" disabled={disabled} placeholder="username" name="username" onChange={handleInput} value={formData.username} />
+                    <input type="email" disabled={disabled} placeholder="email" name="email" onChange={handleInput} value={formData.email} />
                 </label>
                 <label>
-                    <input type="password" disabled={disabled} placeholder="password" name="password" onChange={handleInput} value={formData.password} />
+                    <input type="first_name" disabled={disabled} placeholder="first_name" name="first_name" onChange={handleInput} value={formData.first_name} />
+                </label>
+                <label>
+                    <input type="last_name" disabled={disabled} placeholder="last_name" name="last_name" onChange={handleInput} value={formData.last_name} />
                 </label>
             </form>
             { error && <div id="error">{error}</div>}

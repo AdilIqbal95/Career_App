@@ -8,8 +8,8 @@ const EditProfile = () => {
     const [formData, setFormData] = useState({
         description: "",
         education: "",
-        workexp: "",
-        desiredtitle: "",
+        previous_experience: "",
+        desired_job: "",
     })
     const [error, setError] = useState("");
 
@@ -25,8 +25,8 @@ const EditProfile = () => {
             data.append('cv', cvData)
             data.append('description', formData.description)
             data.append('education', formData.education)
-            data.append('workexp', formData.workexp)
-            data.append('desiredtitle', formData.desiredtitle)
+            data.append('previous_experience', formData.previous_experience)
+            data.append('desired_job', formData.desired_job)
             let token = localStorage.getItem("token")
             let userID = localStorage.getItem("user_id")
             const options = {
@@ -68,10 +68,10 @@ const EditProfile = () => {
                         </select>
                     </label>
                     <label className="user-details" htmlFor="work experience">
-                        <input type="work exp" name="workexp" onChange={handleInput} value={formData.workexp} disabled={disabled} placeholder="💼 Latest Work Experience" />
+                        <input type="work exp" name="previous_experience" onChange={handleInput} value={formData.previous_experience} disabled={disabled} placeholder="💼 Latest Work Experience" />
                     </label>
-                    <label className="user-details" htmlFor="desired job title">
-                        <input type="desired job title" name="desiredtitle" value={formData.desiredtitle} onChange={handleInput} disabled={disabled} placeholder="🥇 Desired Job Title" />
+                    <label className="user-details" htmlFor="desired_job">
+                        <input type="desired_job" name="desired_job" value={formData.desired_job} onChange={handleInput} disabled={disabled} placeholder="🥇 Desired Job Title" />
                     </label>
                     <label className="user-details" htmlFor="cv">
                         <input type="file" id="cv" disabled={disabled} onChange={handleFileInput} name="cv" />
