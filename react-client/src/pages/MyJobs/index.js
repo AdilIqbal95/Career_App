@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAuthContext } from '../../contexts/auth'
+import { ApplicationCard } from '../../components'
 
 const MyJobs = () => {
     const { refresh } = useAuthContext();
@@ -23,12 +24,14 @@ const MyJobs = () => {
                 setMyJobs(data)
             } catch {
                 console.warn("There's an error!!! Cannot fetch user jobs!")
-                setError('❌ Error loading feed')
+                setError('❌ Error loading jobs')
             }
         } fetchMyJobs();
     }, []);
 
-    const renderMyJobs = () => myJobs.map((job) => (<ApplicationCard job={job} />))
+    const renderMyJobs = myJobs.map(job =>
+        <ApplicationCard job={job} />
+    );
 
     return (
         <>
@@ -37,7 +40,7 @@ const MyJobs = () => {
                     <h1>MyJobs</h1>
                 </header>
                 <section>
-                    {renderMyJobs()}
+                    {renderMyJobs}
                     {error && <div id="error">{error}</div>}
                 </section>
             </div>

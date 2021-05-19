@@ -27,6 +27,7 @@ function RewardCard(){
     } catch (err) {
       console.error(err.message)
     }
+  
   }
   
   useEffect(() => {

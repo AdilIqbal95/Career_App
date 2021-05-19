@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useAuthContext } from '../../contexts/auth'
+import axios from 'axios';
 
 const EditProfile = () => {
+    const { refresh } = useAuthContext();
     let history = useHistory();
     const [disabled, setDisabled] = useState(true);
     const [cvData, setCvData] = useState({});
@@ -13,7 +16,8 @@ const EditProfile = () => {
     })
     const [error, setError] = useState("");
 
-    function handleClick(e) { e.preventDefault(); setDisabled(prev => !prev); }
+    function handleClick(e) { 
+        e.preventDefault(); setDisabled(prev => !prev); }
 
     const formIncomplete = () => Object.values(formData).some(v => !v)
 
@@ -33,11 +37,10 @@ const EditProfile = () => {
                 headers: { "Authorization": `Bearer ${token}` }
             };
             await axios.patch(`${process.env.API_URL}/api/users/${userID}/profile/`, data, options)
-            setUserData(data)
             alert('profile updated!')
             location.reload()
         } catch (err) {
-            setError(`❌ Sorry, try again!`)
+            setError(`❌ Sorry, try again! ${err}`)
         }
     }
 
@@ -52,8 +55,8 @@ const EditProfile = () => {
             <main className="main-container" id="editprofile">
                 <form aria-label="edit-profile" id="profile-form" onSubmit={handleUpdateProfile}>
                     <div className="button-container">
-                        {disabled ? <button type="button" onClick={handleClick}>Edit 🖋</button> :
-                            <button type="submit" onClick={handleClick} className={formIncomplete() ? 'disabled' : 'enabled'} disabled={formIncomplete()}>Save! ✔️</button>}
+                        {disabled ? <button onClick={handleClick}>Edit 🖋</button> :
+                            <button type="submit" className={formIncomplete() ? 'disabled' : 'enabled'} disabled={formIncomplete()}>Save! ✔️</button>}
                                 <button onClick={() => { history.push('/home/editaccount') }}>Edit Account</button>
                     </div>
                     <label className="user-details" htmlFor="description">
