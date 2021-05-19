@@ -1,37 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/auth'
 import { ProfileImage } from '../../components'
+import { BsInfoCircle } from "react-icons/bs";
+import { FiLogOut } from "react-icons/fi";
 
 const Profile = () => {
     const { currentUser, logout, refresh } = useAuthContext();
-    const [editProfPic, setEditProfPic] = useState(true);
     const [userData, setUserData] = useState()
 
     const history = useHistory();
 
-    profileData()
-
-    function handleEditProfile(e) {
-        e.preventDefault()
-        setEditProfPic(!editProfPic);
-    }
-
-    async function profileData() {
-        try {
-            // await refresh()
-            let token = localStorage.getItem("token")
-            let userID = localStorage.getItem("user_id")
-            const options = {
-                headers: { "Authorization": `Bearer ${token}` }
-            };
-            const { data } = await axios.get(`${process.env.API_URL}/api/users/${userID}/profile/`, options)
-            setUserData(data)
-        } catch {
-            console.warn("There's an error!!! Cannot fetch user profile details")
-        }
-    }
+    useEffect(() => {
+        async function profileData() {
+            try {
+                // await refresh()
+                let token = localStorage.getItem("token")
+                let userID = localStorage.getItem("user_id")
+                const options = {
+                    headers: { "Authorization": `Bearer ${token}` }
+                };
+                const { data } = await axios.get(`${process.env.API_URL}/api/users/${userID}/profile/`, options)
+                setUserData(data)
+            } catch {
+                console.warn("There's an error!!! Cannot fetch user profile details")
+            }
+        } profileData()
+    }, []);
 
     return (
         <>
@@ -55,12 +51,12 @@ const Profile = () => {
                                 </div>
 
                                 <div className="coin-stats">
-                                {userData && <h3>{userData.points} 💰</h3>}
+                                    {userData && <h3>{userData.points} 💰</h3>}
                                     <button onClick={() => { history.push('/home/jobbahut') }} type="exchange-coins">Exchange at JobbaHut!</button>
                                 </div>
                                 <footer>
-                                    <button onClick={() => { history.push('/home/about') }} id="info" role="more info">infooo</button>
-                                    <button role="logout" id="logout" onClick={logout}>Logout</button>
+                                    <button onClick={() => { history.push('/home/about') }} id="info" role="more info"><BsInfoCircle /></button>
+                                    <button role="logout" id="logout" onClick={logout}><FiLogOut /></button>
                                 </footer>
                             </>}
                     </div>
