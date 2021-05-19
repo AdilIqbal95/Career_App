@@ -1,9 +1,10 @@
 // Imports / Variables
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@300;400;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Euphoria+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,200;0,400;0,700;1,200;1,400;1,700&display=swap');
-// font-family: 'Euphoria Script', cursive;
 // font-family: 'Barlow Semi Condensed', sans-serif;
+// font-family: 'IBM Plex Mono', monospace;
+// font-family: 'VT323', monospace;
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 @import './variables';
@@ -50,8 +51,14 @@ button {
     cursor: pointer;
     box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
     transition: 0.5s;
+    font-size: 18px;
     }
 
 button:hover {
     box-shadow: none;
     }
+
+h1, button {
+    font-family: 'VT323', monospace;
+}
+
