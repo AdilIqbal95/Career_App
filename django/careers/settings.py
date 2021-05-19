@@ -19,6 +19,14 @@ import environ
 env = environ.Env()
 environ.Env.read_env()
 
+import environ
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+# reading .env file
+environ.Env.read_env()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -216,3 +224,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
     "https://jobbahunt.netlify.app"
 ]
+
+# INDEED API ACCESS
+REED_API_KEY = env.str('REED_API_KEY')
