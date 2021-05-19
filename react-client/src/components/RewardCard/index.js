@@ -34,19 +34,23 @@ function RewardCard({reward}){
   // console.log('Rewards are: ',rewards)
 
   return (
- 
-      <>
-        <section className="reward">
-          <h4>{reward.title}</h4>
-          <p>{reward.description}</p>
-          
+
+    <>
+      <section className="reward">
+        <h4>{reward.title}</h4>
+        <p>{reward.description}</p>
+        <p className="reward-points">
+          {reward.point_change > 0
+            ? `+${reward.point_change}`
+            : `-${reward.point_change}`}</p>
+        {collected ?
           {collected ? 
-            <p>Collected!</p>
-            : <button onClick={collectReward}>Collect!</button>}
-        </section>
-      </>
-      
-    
+        {collected ?
+          <p>Collected!</p>
+          : <button disabled={!available} onClick={collectReward}>Collect!</button>}
+      </section>
+    </>
+
   );
 
 }
