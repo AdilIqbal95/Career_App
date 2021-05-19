@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useAuthContext } from '../../contexts/auth'
+import data from "../../temp_data";
 
 function RewardCard(){
   const { refresh } = useAuthContext();
   const [rewards, setRewards] = useState([]);
-  const [title, setTitle] = useState()
+  // const [title, setTitle] = useState()
 
 
   const getRewards = async () => {
@@ -21,7 +22,7 @@ function RewardCard(){
       const data = response.data
       const title = data[0].title
       setRewards(data)
-      setTitle(title)
+      // setTitle(title)
       // console.log(data[0].title)
     } catch (err) {
       console.error(err.message)
@@ -35,12 +36,16 @@ function RewardCard(){
   console.log('Rewards are: ',rewards)
 
   return (
-    <section className="col" id="reward1">
-      <h4>Reward 1</h4>
-      
-      <p>{title}</p>
-    </section>
+    <>
+      {rewards.map(reward => (
+        <section className="col" id="reward1">
+          <h4>{reward.title}</h4>
+          <p>{reward.description}</p>
+        </section>
+      ))}
+    </>  
   );
-  }
+
+}
 
 export default RewardCard;

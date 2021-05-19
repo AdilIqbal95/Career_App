@@ -42,17 +42,19 @@ const JobbaHut = () => {
             <div className="main-container" id="jobbahut">
                 <header>
                     <h1>JobbaHut</h1>
-                    <div class="row">
+                    <div className="row">
                         <section class="col">
                             {dailyReward()}
                         </section>
-                        <section class ="col"id="trophy-collection">
+                    </div>
+                    <div className="row">
+                        <RewardCard/>
+                    </div>
+                    <div className="row">
+                        <section className ="col"id="trophy-collection">
                             <h4>My Trophies 🏆</h4>
                             {/* <Trophies data={trophies} /> */}
                         </section>
-                    </div>
-                    <div class="row">
-                        <RewardCard/>
                     </div>
 
                     
