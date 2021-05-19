@@ -1,36 +1,47 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const EditProfile = () => {
+    let history = useHistory();
     const [disabled, setDisabled] = useState(true);
+    const [cvData, setCvData] = useState({});
     const [formData, setFormData] = useState({
-        name: "",
-        bio: "",
+        description: "",
         education: "",
         workexp: "",
-        desiredtitle: ""
+        desiredtitle: "",
     })
+    const [error, setError] = useState("");
 
-    function handleClick(e) { e.preventDefault(); setDisabled(!disabled); }
+    function handleClick(e) { e.preventDefault(); setDisabled(prev => !prev); }
+
+    const formIncomplete = () => Object.values(formData).some(v => !v)
 
     const handleUpdateProfile = async (e) => {
         e.preventDefault();
         await refresh()
         try {
+            const data = new FormData()
+            data.append('cv', cvData)
+            data.append('description', formData.description)
+            data.append('education', formData.education)
+            data.append('workexp', formData.workexp)
+            data.append('desiredtitle', formData.desiredtitle)
             let token = localStorage.getItem("token")
             let userID = localStorage.getItem("user_id")
             const options = {
                 headers: { "Authorization": `Bearer ${token}` }
             };
-            await axios.patch(`${process.env.API_URL}/api/users/${userID}/profile/`, formData, options)
+            await axios.patch(`${process.env.API_URL}/api/users/${userID}/profile/`, data, options)
             setUserData(data)
             alert('profile updated!')
         } catch (err) {
-            setError(err)
+            setError(`❌ Sorry, try again!`)
         }
     }
 
     const handleInput = e => setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
-    const handleFileInput = e => { setFormData(e.target.files[0]) }
+    const handleFileInput = e => { setCvData(e.target.files[0]) }
 
     return (
         <>
@@ -41,17 +52,14 @@ const EditProfile = () => {
                 <form aria-label="edit-profile" id="profile-form" onSubmit={handleUpdateProfile}>
                     <div className="button-container">
                         {disabled ? <button type="submit" onClick={handleClick}>Edit 🖋</button> :
-                            <button type="submit" onClick={handleClick}>Save! ✔️</button>}
+                            <button type="submit" onClick={handleClick} className={formIncomplete() ? 'disabled' : 'enabled'} disabled={formIncomplete()}>Save! ✔️</button>}
                     </div>
-                    <label className="user-details" htmlFor="full name">
-                        <input type="name" value={formData.name} onChange={handleInput} disabled={disabled} placeholder="😊 Full Name" />
-                    </label>
-                    <label className="user-details" htmlFor="email">
-                        <input type="email" value={formData.email} onChange={handleInput} disabled={disabled} placeholder="📧 Email" />
+                    <label className="user-details" htmlFor="description">
+                        <input type="description" name="description" autoComplete="off" value={formData.description} onChange={handleInput} disabled={disabled} placeholder="🖊 Add a bio" />
                     </label>
                     <label className="user-details" htmlFor="education">
-                        <select type="education" disabled={disabled}>
-                            <option value="" selected disabled hidden>📚 Highest Level of Education</option>
+                        <select type="education" name="education" disabled={disabled} onChange={handleInput}>
+                            <option value="0" selected disabled hidden>📚 Highest Level of Education</option>
                             <option value="1">None</option>
                             <option value="2">A-Level or equivalent</option>
                             <option value="3">Bachelor's</option>
@@ -60,16 +68,19 @@ const EditProfile = () => {
                         </select>
                     </label>
                     <label className="user-details" htmlFor="work experience">
-                        <input type="work exp" onChange={handleInput} value={formData.workexp} disabled={disabled} placeholder="💼 Latest Work Experience" />
+                        <input type="work exp" name="workexp" onChange={handleInput} value={formData.workexp} disabled={disabled} placeholder="💼 Latest Work Experience" />
                     </label>
                     <label className="user-details" htmlFor="desired job title">
-                        <input type="desired job title" value={formData.desiredtitle} onChange={handleInput} disabled={disabled} placeholder="🥇 Desired Job Title" />
+                        <input type="desired job title" name="desiredtitle" value={formData.desiredtitle} onChange={handleInput} disabled={disabled} placeholder="🥇 Desired Job Title" />
                     </label>
-                    <label className="user-details" htmlFor="desired job title">
-                        <input type="file" id="cv" onChange={handleFileInput} name="cv" />
+                    <label className="user-details" htmlFor="cv">
+                        <input type="file" id="cv" disabled={disabled} onChange={handleFileInput} name="cv" />
                     </label>
                 </form>
+                {error && <div style={{ position: "absolute" }} id="error">{error}</div>}
             </main>
+
+
         </>
     )
 }
