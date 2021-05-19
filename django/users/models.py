@@ -2,36 +2,22 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.conf import settings
 from rewards.models import Reward
-from careers.storage_backends import LocalMediaStorage, PrivateMediaStorage
-import os
-
-def select_storage():
-    return LocalMediaStorage() if settings.DEBUG else PrivateMediaStorage()
-
-# https://stackoverflow.com/questions/15140942/django-imagefield-change-file-name-on-upload
-def rename(path):
-    def inner(instance, filename):
-        # split extension
-        ext = filename.split('.')[-1]
-        # get filename
-        filename = '{}.{}'.format(instance.pk, ext)
-        # return the whole path to the file
-        return os.path.join(path, filename)
-    return inner
+from .utils import Rename, select_storage
 
 class User(AbstractUser):
     pass
 
-
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     description = models.TextField(max_length=240, blank=True)
-    profile_image = models.ImageField(upload_to=rename('profiles/image'), blank=True, null=True, storage=select_storage())
-    cv = models.FileField(upload_to=rename('profiles/cv'), blank=True,  null=True, storage=select_storage())
+    profile_image = models.ImageField(upload_to=Rename('profiles/image'), blank=True, null=True, storage=select_storage())
+    cv = models.FileField(upload_to=Rename('profiles/cv'), blank=True,  null=True, storage=select_storage())
     points = models.PositiveSmallIntegerField(default=0)
     rewards = models.ManyToManyField(Reward, through='UserReward')
+    education = models.CharField(max_length=50, blank=True,  null=True)
+    previous_experience = models.CharField(max_length=100, blank=True,  null=True)
+    desired_job = models.CharField(max_length=50, blank=True,  null=True)
 
     def __str__(self):
         return self.user.username
