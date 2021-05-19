@@ -13,8 +13,17 @@ function RewardCard({reward}){
   //   )
   // }
   
-  function collectReward() {
-    setCollected(true)
+  async function collectReward() {
+
+    let token = localStorage.getItem("token")
+    let userID = localStorage.getItem("user_id")
+
+    const options = {
+      headers: { "Authorization": `Bearer ${token}` }
+    };
+    try {
+      await axios.post(`${process.env.API_URL}/api/users/${userID}/rewards/`, { "reward": reward.id }, options)
+      setCollected(true)
   }
 
   // <section className="col" id="reward1">
