@@ -35,7 +35,7 @@ function RewardCard(){
   console.log('Rewards are: ',rewards)
 
   return (
-    <section class="col" id="reward1">
+    <section className="col" id="reward1">
       <h4>Reward 1</h4>
       
       <p>{title}</p>
