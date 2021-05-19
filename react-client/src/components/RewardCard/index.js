@@ -4,6 +4,10 @@ import { useAuthContext } from '../../contexts/auth'
 
 function RewardCard(){
   const { refresh } = useAuthContext();
+  const [rewards, setRewards] = useState([]);
+  const [title, setTitle] = useState()
+
+
   const getRewards = async () => {
     await refresh()
     try {
@@ -15,7 +19,10 @@ function RewardCard(){
       const response = await axios.get(`${process.env.API_URL}/api/rewards/`, options)
       // const jsonData = await response.json();
       const data = response.data
-      console.log(data)
+      const title = data[0].title
+      setRewards(data)
+      setTitle(title)
+      // console.log(data[0].title)
     } catch (err) {
       console.error(err.message)
     }
@@ -25,9 +32,13 @@ function RewardCard(){
     getRewards();
   },[]);
 
+  console.log('Rewards are: ',rewards)
+
   return (
     <section class="col" id="reward1">
       <h4>Reward 1</h4>
+      
+      <p>{title}</p>
     </section>
   );
   }
