@@ -3,7 +3,7 @@ import EditProfile from '.';
 
 describe('EditProfile', () => {
     test('it shows page header', () => {
-        render(<EditProfile />)
+        renderWithProviders(<EditProfile />)
         expect(screen.getByRole('heading').textContent).toContain('Edit Your Profile');
     })
 })
