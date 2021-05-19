@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 
-function JobCard({ job}){
+function JobCard({job}){
     
  
   return (
       <div role="listitem">
-        <h2>{job.Role}|{job.Company}</h2>
+        <h2 style={{marginTop: "1rem"}}>{job.Role}|{job.Company}</h2>
         <p>{job.Description}</p>
       </div>
   );

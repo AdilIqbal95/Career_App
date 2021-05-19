@@ -1,4 +1,5 @@
 # from django.contrib.auth.models import User, Group
+from django.conf import settings
 from django.shortcuts import get_object_or_404, redirect
 from rest_framework.response import Response
 from rest_framework import status
@@ -15,10 +16,14 @@ class AuthViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
     permission_classes = [permissions.AllowAny]
 
 
-class UserViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+class UserViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.UpdateModelMixin):
     """
     API endpoint that allows users to be viewed or edited.
     """
+    def update(self, request, *args, **kwargs):
+        kwargs['partial'] = True
+        return super().update(request, *args, **kwargs)
+            
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
@@ -29,7 +34,7 @@ class ProfileViewSet(viewsets.GenericViewSet, mixins.RetrieveModelMixin, mixins.
     """
 
     def get_queryset(self):
-        return Profile.objects.filter(pk=self.kwargs['pk'])
+        return Profile.objects.filter(user=self.kwargs['pk'])
 
     def update(self, request, *args, **kwargs):
         kwargs['partial'] = True
@@ -45,7 +50,20 @@ class ApplicationViewSet(viewsets.ModelViewSet):
     """
 
     def get_queryset(self):
-        return Application.objects.filter(user_profile=self.kwargs['user_pk'])
+        print(Application.objects.filter(user=self.kwargs['user_pk']))
+        return Application.objects.filter(user=self.kwargs['user_pk'])
+
+    def perform_create(self, serializer):
+        """
+            Add reward to user and update their points
+        """
+        print(self.kwargs['user_pk'])
+        user = get_object_or_404(User, pk=self.kwargs['user_pk'])
+        serializer.save(user=user)
+
+    def update(self, request, *args, **kwargs):
+        kwargs['partial'] = True
+        return super().update(request, *args, **kwargs)
 
     serializer_class = ApplicationSerializer
     permission_classes = [permissions.IsAuthenticated]
@@ -71,9 +89,12 @@ class UserRewardViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.C
         if(reward.one_time and user_rewards.filter(reward=reward).exists()):
             return Response({'detail': 'Reward can only be claimed once'},  status=status.HTTP_406_NOT_ACCEPTABLE)
         else:
-            self.perform_create(serializer)
-            headers = self.get_success_headers(serializer.data)
-            return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)        
+            try:
+                self.perform_create(serializer)
+                headers = self.get_success_headers(serializer.data)
+                return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)  
+            except:
+                return Response({'detail': 'Not enough points to claim reward.'},  status=status.HTTP_406_NOT_ACCEPTABLE)
 
     def perform_create(self, serializer):
         """

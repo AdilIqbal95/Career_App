@@ -25,6 +25,7 @@
 
             input {
                 position: absolute;
+                z-index: 1;
                 margin: 1rem;
             }
 
@@ -47,6 +48,7 @@
     display: flex;
     flex-direction: column;
     align-items: space-between;
+    justify-content: center;
     
     body {
     margin: 1rem;
@@ -83,11 +85,11 @@
 
 
     .username {
-    margin: 10px;
     font-weight: 900;
     font-size: 1.5rem;
     color: #de70ff;
-    letter-spacing: 1px;
+    letter-spacing: 4px;
+    padding: none;
     }
 
     label, input {
@@ -144,7 +146,7 @@
     // }
 
     button[type="exchange-coins"] {
-        background: rgb(243, 190, 75);
+        background: rgb(250, 177, 43);
     }
 
     
