@@ -36,23 +36,16 @@ const Search = () => {
   return (
     <>
       <div className="" id="SearchBar-container">
-        <input name="input" onChange={handleInput} className="SearchBar col" type='text'></input>
-        <div>
-          <select name="Filter_1" id="Filter_1">
-            <option value="All">All</option>
-            <option value="Jobs">Jobs</option>
-            <option value="Companies">Companies</option>
-          </select>
+      <input name="input" onChange={handleInput} placeholder="Find your dream job today" className="SearchBar" type='text'></input>
+      <button onClick={getJobs} className="col"><i id="search" class="fa fa-search" aria-hidden="true"></i></button>
+      </div>
+
+   <br></br>
           <select name="Filter_2" id="Filter_2">
             <option value="Recent">Recent</option>
             <option value="Popular">Popular</option>
           </select>
-        </div>
-
-        <button onClick={getJobs} className="col"><i id="search" class="fa fa-search" aria-hidden="true"></i></button>
-
-      </div>
-
+   
       <div class="row">
         <div>
           {loading ? <div></div>
