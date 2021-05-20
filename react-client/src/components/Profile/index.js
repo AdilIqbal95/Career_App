@@ -11,6 +11,7 @@ const Profile = () => {
     const { currentUser, logout, refresh } = useAuthContext();
     const [userData, setUserData] = useState();
     const [username, setUsername] = useState(localStorage.getItem('username'));
+    const [loading, setLoading] = useState(true);
 
     const history = useHistory();
 
@@ -26,11 +27,12 @@ const Profile = () => {
                 const { data } = await axios.get(`${process.env.API_URL}/api/users/${userID}/profile/`, options)
                 setUserData(data)
                 localStorage.setItem("jobbas", data.points)
+                setLoading(true)
             } catch {
                 console.warn("There's an error!!! Cannot fetch user profile details")
             }
         } profileData()
-    }, [userData]);
+    }, [loading]);
 
     return (
         <>
