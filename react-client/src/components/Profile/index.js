@@ -28,7 +28,7 @@ const Profile = () => {
                 console.warn("There's an error!!! Cannot fetch user profile details")
             }
         } profileData()
-    }, []);
+    }, [userData]);
 
     return (
         <>
