@@ -9,9 +9,12 @@ const Search = () => {
     const tempData = data
     const [inputData, setInputData] = useState({input:""})
     const { refresh } = useAuthContext();
-    const [jobsData, setjobsData] = useState()
-    const handleInput = e => setInputData(prev => ({ ...prev, [e.target.name]: e.target.value }))
+    const [jobsData, setJobsData] = useState()
+    const [totalResults, setTotalResults] = useState()
     let input = inputData.input
+
+    const handleInput = e => setInputData(prev => ({ ...prev, [e.target.name]: e.target.value }))
+    
     console.log("Input data is: ",inputData)
     console.log("Input is: ",input)
     
@@ -27,13 +30,14 @@ const Search = () => {
         const response = await axios.get(`${process.env.API_URL}/api/jobs?keywords=${input}`, options)
         const data = response.data.results
         const totalResults = response.data.totalResults
-        console.log("job data: ",data)
+        setJobsData(data)
+        setTotalResults(totalResults)
+        console.log("job data: ",jobsData)
         console.log("total results: ",totalResults)
       } catch (err) {
         console.error(err.message)
       }
     }
-    getJobs()
 
     return (
         <>
