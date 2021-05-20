@@ -10,6 +10,6 @@ function JobCard({job}){
       </div>
   );
   
-  }
+}
 
 export default JobCard;
