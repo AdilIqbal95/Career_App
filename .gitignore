@@ -6,3 +6,5 @@ node_modules
 django/media/
 coverage
 .env
+staticfiles
+django/.coverage
