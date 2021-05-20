@@ -4,8 +4,8 @@ import {JobCard} from '..'
 
 function Results({data}){
 
-    const renderJobs = data.map(d =>
-        <JobCard key={d.id} job={d} />
+    const renderJobs = data.map((d,i) =>
+        <JobCard key={i} job={d} />
     );
    
     return (
