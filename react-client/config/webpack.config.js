@@ -28,7 +28,7 @@ const config = {
       // used to add the JavaScript code to the HTML
       template: path.join(PUBLIC_DIRECTORY, 'index.html'),
     }),
-    new Dotenv()
+    new Dotenv({systemvars:true})
   ],
   module: {
     // helpers we want webpack to use
