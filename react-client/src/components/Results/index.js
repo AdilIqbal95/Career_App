@@ -2,11 +2,11 @@ import React, {useState} from 'react'
 import {JobCard} from '..'
 
 
-function Results(data){
+function Results({data}){
 
-    const [jobList, setJobList] = useState(data.data)
-    console.log(jobList)
-    const renderJobs = jobList.map(d =>
+    // console.log(data)
+
+    const renderJobs = data.map(d =>
         <JobCard job={d} />
     );
    

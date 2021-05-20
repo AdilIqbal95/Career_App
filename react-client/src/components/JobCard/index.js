@@ -5,8 +5,8 @@ function JobCard({job}){
     
   return (
       <div role="listitem">
-        <h2 style={{marginTop: "1rem"}}>{job.Role}|{job.Company}</h2>
-        <p>{job.Description}</p>
+        <h2 style={{marginTop: "1rem"}}>{job.jobTitle} | {job.employerName}</h2>
+        <p>{job.jobDescription}</p>
       </div>
   );
   
