@@ -8,9 +8,9 @@ describe('MyJobs', () => {
         jest.resetAllMocks()
         wrapper = ({ children }) => <AuthProvider>{children}</AuthProvider>
     })
-    
+
     test('it shows page header', () => {
         renderWithProviders(<MyJobs />)
-        expect(screen.getByRole('heading').textContent).toContain('MyJobs');
+        expect(screen.getAllByRole('heading')[0].textContent).toContain('MyJobs');
     })
 })
