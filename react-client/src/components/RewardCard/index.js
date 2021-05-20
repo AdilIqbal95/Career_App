@@ -6,6 +6,7 @@ import data from "../../temp_data";
 function RewardCard({ reward }) {
 
   const [collected, setCollected] = useState(false)
+
   const [available, setAvailable] = useState(true);
 
   async function collectReward() {
@@ -40,7 +41,6 @@ function RewardCard({ reward }) {
           : <button disabled={!available} onClick={collectReward}>Collect!</button>}
       </section>
     </>
-
   );
 
 }
