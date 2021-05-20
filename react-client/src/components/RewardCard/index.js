@@ -4,6 +4,7 @@ import { useAuthContext } from '../../contexts/auth';
 
 function RewardCard({ reward }) {
   const [collected, setCollected] = useState(false)
+
   const [available, setAvailable] = useState(true);
   const [error, setError] = useState("")
 
@@ -41,7 +42,6 @@ function RewardCard({ reward }) {
         {error && <div id="error">{error}</div>}
       </section>
     </>
-
   );
 
 }

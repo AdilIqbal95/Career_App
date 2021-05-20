@@ -4,9 +4,10 @@ const SearchBar = () => {
     
     return (
         <>
-        <div id="SearchBar-container">
-          <i id="search" class="fa fa-search" aria-hidden="true"></i>
-          <input className= "SearchBar" type='text'></input>
+        <div className="row"id="SearchBar-container">
+          <input className= "SearchBar col" type='text'></input>
+          <button className="col"><i id="search" class="fa fa-search" aria-hidden="true"></i>
+          </button>
         </div>
         <div class="row">
           <div class="col" id="Filter1">
@@ -14,7 +15,6 @@ const SearchBar = () => {
               <option value="All">All</option>
               <option value="Jobs">Jobs</option>
               <option value="Companies">Companies</option>
-              <option value="Users">Users</option>
             </select>
           </div>
           <div class="col" id="Filter2">
