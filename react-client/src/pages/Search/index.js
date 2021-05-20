@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Results } from '../../components';
 import { useAuthContext } from "../../contexts/auth";
 import axios from 'axios';
@@ -10,7 +10,7 @@ const Search = () => {
   const [totalResults, setTotalResults] = useState()
   let input = inputData.input
   const [loading, setLoading] = useState(true)
-  const [dropVal, setDropVal] = useState()
+  const [dropVal, setDropVal] = useState("")
 
   const handleInput = e => setInputData(prev => ({ ...prev, [e.target.name]: e.target.value }))
 
@@ -34,13 +34,18 @@ const Search = () => {
       console.error(err.message)
     }
   }
-
+  
+  const createDate = (data) => {
+    let [day,month,year] = data.date.split('/')
+    return new Date(year,month,day)
+    }
   const handleDropDown = (e) => {
     setDropVal(e.target.value)
-
     switch (e.target.value) {
       case "Recent":
-        setJobsData(jobsData.sort( ( a , b ) => b.date - a.date));
+        setJobsData(jobsData.sort( ( a , b ) => {
+        return createDate(b) - createDate(a)
+        }))
         break;
       case "Popular":
         setJobsData(jobsData.sort( ( a , b ) => b.applications - a.applications ));
@@ -48,7 +53,6 @@ const Search = () => {
     }
 
   }
-  console.log(jobsData)
   return (
     <>
       <div className="" id="SearchBar-container">
