@@ -1,5 +1,4 @@
 import { screen } from '@testing-library/react';
-import { AuthProvider } from '.'
 import Profile from '.';
 
 const TestComp = () => <h1>Just Testing</h1>
