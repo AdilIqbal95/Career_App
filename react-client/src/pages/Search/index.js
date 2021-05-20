@@ -34,11 +34,10 @@ const Search = () => {
       console.error(err.message)
     }
   }
-  console.log(jobsData)
 
   const handleDropDown = (e) => {
     setDropVal(e.target.value)
-    
+
     switch (e.target.value) {
       case "Recent":
         setJobsData(jobsData.sort( ( a , b ) => b.date - a.date));
@@ -49,7 +48,7 @@ const Search = () => {
     }
 
   }
-  console.log(dropVal)
+
 
   return (
     <>
