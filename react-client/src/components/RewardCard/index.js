@@ -24,7 +24,7 @@ function RewardCard({ reward }) {
 
   return (
     <>
-      <section className="reward">
+      <section className="reward many-time-reward">
         <title className="card-title">
         <h4>{reward.title}</h4>
         {/* <p className="reward-points"> */}

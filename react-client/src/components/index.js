@@ -8,3 +8,5 @@ export { default as ProfileImage } from './ProfileImage'
 export { default as RewardCard } from './RewardCard'
 export { default as UpdateAccForm } from './UpdateAccForm'
 export { default as ApplicationCard } from './ApplicationCard'
+export { default as OneTimeRewards } from './OneTimeRewards'
+
