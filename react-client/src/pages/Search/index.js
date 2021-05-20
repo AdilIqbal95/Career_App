@@ -35,27 +35,27 @@ const Search = () => {
 
   return (
     <>
-      <div className="" id="SearchBar-container">
-      <input name="input" onChange={handleInput} placeholder="Find your dream job today" className="SearchBar" type='text'></input>
-      <button onClick={getJobs} className="col"><i id="search" class="fa fa-search" aria-hidden="true"></i></button>
-      </div>
+      <main className="main-container">
 
-   <br></br>
-          <select name="Filter_2" id="Filter_2">
+        <div className="" id="SearchBar-container">
+          <input name="input" onChange={handleInput} placeholder="Find your dream job today" className="SearchBar" type='text'></input>
+          <button onClick={getJobs} className="col"><i id="search" class="fa fa-search" aria-hidden="true"></i></button>
+          <select style={{ marginLeft: "1rem" }} name="Filter_2" id="Filter_2">
             <option value="Recent">Recent</option>
             <option value="Popular">Popular</option>
           </select>
-   
-      <div class="row">
-        <div>
+        </div>
+
+        <div className="main-container" style={{ overflowY: "auto" }}>
+
           {loading ? <div></div>
             : <>
-              <h1> Results</h1>
+              <h1 style={{ display: "none" }}> Results</h1>
               <div><Results data={jobsData} /></div></>}
+
         </div>
-      </div>
 
-
+      </main>
 
     </>
   )
