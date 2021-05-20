@@ -29,10 +29,6 @@ const MyJobs = () => {
         } fetchMyJobs();
     }, []);
 
-    const renderMyJobs = myJobs.map(job =>
-        <ApplicationCard job={job} />
-    );
-
     return (
         <>
             <div className="main-container">
@@ -40,7 +36,7 @@ const MyJobs = () => {
                     <h1>MyJobs</h1>
                 </header>
                 <section>
-                    {renderMyJobs}
+                    {myJobs.length === 0 ? <h3>Looks like you've not got any jobs saved. Head over to the <a href="/home/search">search</a> page!</h3> : myJobs.map(job => <ApplicationCard job={job} />)}
                     {error && <div id="error">{error}</div>}
                 </section>
             </div>
