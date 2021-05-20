@@ -31,12 +31,12 @@ const MyJobs = () => {
 
     return (
         <>
-            <div className="main-container">
-                <header>
-                    <h1>MyJobs</h1>
-                </header>
+            <h1>MyJobs</h1>
+            <div className="main-container" style={{ overflowY: "auto" }}>
+
                 <section>
-                    {myJobs.length === 0 ? <h3>Looks like you've not got any jobs saved. Head over to the <a href="/home/search">search</a> page!</h3> : myJobs.map(job => <ApplicationCard job={job} />)}
+                    {myJobs.length === 0 ? <h3>Looks like you've not got any jobs saved. Head over to the <a href="/home/search">search</a> page!</h3> : 
+                    myJobs.map(job => <ApplicationCard job={job} />)}
                     {error && <div id="error">{error}</div>}
                 </section>
             </div>
