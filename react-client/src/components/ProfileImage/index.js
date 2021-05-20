@@ -38,8 +38,6 @@ const ProfileImage = () => {
             try {
                 await axios.post(`${process.env.API_URL}/api/users/${userID}/rewards/`, {'reward': 3}, options)    
             } catch (error) {}
-                
-            
             setLoading(false)
         } catch (err) {
             setLoading(false)
@@ -77,7 +75,7 @@ const ProfileImage = () => {
                 {loading && <div style={{ position: "absolute" }} id="loading">Loading . . .</div>}
                 {userData ? <img className="profile-pic" src={userData.profile_image}></img>
                     : <img src="https://i.imgur.com/tfnVE8n.png" className="profile-pic"></img>}
-                <form aria-label="edit profile pic" className="change-profile-pic" onSubmit={handlePicUpdate}>
+                <form aria-label="edit profile pic" role="edit-profile" className="change-profile-pic" onSubmit={handlePicUpdate}>
                     {editProfPic ?
                         <button onClick={handleEditProfile}> 🖋 </button> :
                         <>
