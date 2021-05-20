@@ -25,15 +25,19 @@ function RewardCard({ reward }) {
   return (
     <>
       <section className="reward">
+        <title className="card-title">
         <h4>{reward.title}</h4>
-        <p>{reward.description}</p>
-        <p className="reward-points">
+        {/* <p className="reward-points"> */}
           {reward.point_change > 0
-            ? `+${reward.point_change}`
-            : `-${reward.point_change}`}</p>
+            ? <p style={{color: "#00ED20"}}> +{reward.point_change}</p>
+            : <p style={{color: "#FF3333"}}> -{reward.point_change}</p>}
+            {/* </p> */}
+            </title>
+        <p>{reward.description}</p>
+     
         {collected ?
-          <p>Collected!</p>
-          : <button disabled={!available} onClick={collectReward}>Collect!</button>}
+          <p style={{textAlign: "center"}}>✅ Collected!</p>
+          : <div className="button-container"><button disabled={!available} onClick={collectReward}>Collect!</button></div>}
         {error && <div id="error">{error}</div>}
       </section>
     </>
