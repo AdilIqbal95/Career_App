@@ -35,8 +35,9 @@ const JobbaHut = () => {
   }, []);
 
   function renderFinalReward() {
+    let finalReward = rewards.find(r => r.id === 9);
     return (
-      <><FinalReward reward={rewards.find(r => r.id === 9)} /></>
+      finalReward && <FinalReward reward={finalReward} />
     )
   }
 
