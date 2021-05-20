@@ -20,7 +20,7 @@ const Login = () => {
             setLoading(true)
             await login(formData)
             localStorage.setItem("username", formData.username);
-            history.push('/home')
+            history.push('/home/jobs')
         } catch (err) {
             setLoading(false)
             setError(err)
