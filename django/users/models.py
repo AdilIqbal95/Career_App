@@ -15,11 +15,12 @@ class Profile(models.Model):
     profile_image = models.ImageField(upload_to=Rename('profiles/image'), blank=True, null=True, storage=select_storage())
     cv = models.FileField(upload_to=Rename('profiles/cv'), blank=True,  null=True, storage=select_storage())
     points = models.PositiveSmallIntegerField(default=0)
+    daily_streak = models.PositiveIntegerField(default=0)
     rewards = models.ManyToManyField(Reward, through='UserReward')
     education = models.CharField(max_length=50, blank=True,  null=True)
     previous_experience = models.CharField(max_length=100, blank=True,  null=True)
     desired_job = models.CharField(max_length=50, blank=True,  null=True)
-
+    
     def __str__(self):
         return self.user.username
     
