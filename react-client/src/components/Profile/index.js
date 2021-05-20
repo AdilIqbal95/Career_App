@@ -8,7 +8,7 @@ import { FiLogOut } from "react-icons/fi";
 import { BiCalendarAlt } from "react-icons/bi";
 
 const Profile = () => {
-    const { currentUser, logout, refresh } = useAuthContext();
+    const { currentUser, logout, refresh, profile } = useAuthContext();
     const [userData, setUserData] = useState();
     const [username, setUsername] = useState(localStorage.getItem('username'));
     const [loading, setLoading] = useState(true);
@@ -32,7 +32,7 @@ const Profile = () => {
                 console.warn("There's an error!!! Cannot fetch user profile details")
             }
         } profileData()
-    }, [loading]);
+    }, [loading,profile]);
 
     return (
         <>
