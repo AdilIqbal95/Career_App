@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { RewardCard } from '../../components';
+import { RewardCard, OneTimeRewards, FinalReward } from '../../components';
 import { useAuthContext } from '../../contexts/auth'
 import axios from "axios";
+import Spinner from 'react-bootstrap/Spinner'
 
 const JobbaHut = () => {
   const { refresh } = useAuthContext();
   const [rewards, setRewards] = useState([]);
-
+  const [loading, setLoading] = useState(true);
 
   const getRewards = async () => {
     await refresh()
@@ -19,27 +20,11 @@ const JobbaHut = () => {
       const response = await axios.get(`${process.env.API_URL}/api/rewards/`, options)
       const data = response.data
       setRewards(data)
+      setLoading(false)
     } catch (err) {
       console.error(err.message)
     }
   }
-
-  // function dailyReward() {
-  //     return (
-  //         <>
-  //             {showCollected ?
-  //                 <section id="daily-reward">
-  //                     <h4>Daily Reward 🎁</h4>
-  //                     <p ><em>"Morning Motivation and add some motivational quote here!"</em></p>
-  //                     <button onClick={collectReward}>Collect!</button>
-  //                 </section> : <section id="daily-reward">
-  //                     <h4>Daily Reward 🎁</h4>
-  //                     <p>collected!</p>
-  //                 </section>
-  //             }
-  //         </>
-  //     )
-  // }
 
   function collectReward() {
     setCollected(false)
@@ -48,33 +33,34 @@ const JobbaHut = () => {
   useEffect(() => {
     getRewards();
   }, []);
-  // function Trophies({data}){
-  //     return (
-  //         data.map(item => <span><h3 className="trophies">{item.login}</h3><TrophyAvatar url={item.avatar_url}/></span>)
-  //     )
-  // }
 
-  // function TrophyAvatar({url}) {
-  //     return (
-  //         <img src={url} className="user-avatar" alt="github-user-avatar"/>
-  //     )
-  // }
+  function renderFinalReward() {
+    return (
+      <><FinalReward reward={rewards.find(r => r.id === 9)} /></>
+    )
+  }
 
+  console.log(rewards.find(r => r.id === 9))
 
   return (
     <>    <h1>JobbaHut</h1>
       <div className="main-container" id="jobbahut">
+        {loading ? <div id="loading"> <Spinner animation="border" variant="warning" role="status" /></div> :
+          <>
+            {
+              rewards.filter(r => !r.one_time && r.id !== 9).map(reward => (
+                <RewardCard key={reward.id} reward={reward} />
+              ))
+            }
+            {renderFinalReward()}
+         
+            <h1>One Time Rewards - Updates automatically!</h1>
 
-        {/* <div className="row">
-                        <section className="col">
-                            {dailyReward()}
-                        </section>
-                    </div> */}
-
-        {rewards.filter(r => !r.one_time).map(reward => (
-          <RewardCard key={reward.id} reward={reward} />
-        ))}
-
+            {rewards.filter(r => r.one_time).map(reward => (
+              <OneTimeRewards key={reward.id} reward={reward} />
+            ))}
+          </>
+        }
 
       </div>
     </>

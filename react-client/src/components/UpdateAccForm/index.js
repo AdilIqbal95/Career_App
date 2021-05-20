@@ -26,6 +26,10 @@ const UpdateAccForm = () => {
             };
             await axios.patch(`${process.env.API_URL}/api/users/${userID}/`, formData, options)
             alert('account updated!')
+            // add uploaded CV reward
+            try {
+                await axios.post(`${process.env.API_URL}/api/users/${userID}/rewards/`, {'reward': 8}, options)    
+            } catch (error) { }
         } catch (err) {
             setError(`❌ Sorry, try again! ${err}`)
         }

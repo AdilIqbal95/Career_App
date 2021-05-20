@@ -78,7 +78,6 @@ export const AuthProvider = ({ children }) => {
             localStorage.setItem("token", data.access);
             console.log("success! your access token has been updated")
         } catch (err) {
-            setLoading(false)
             console.warn("cannot get new token")
         }
     }

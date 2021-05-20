@@ -2,27 +2,32 @@
     overflow-y: auto;
     display: flex; 
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
+    justify-content: flex-start;
+    // align-items: center;
     max-width: 1100px;
 
     .reward {
         background-color: white;
-        display: inline-block;
         padding: 2rem;
         border-radius: 10px;
         border: solid 2px rgb(250, 177, 43);
         margin: 1rem;
-        width: 40%;
-        min-height: 220px;
-        max-height: 220px;
+        width: 43%;
     }
 
-    #daily-reward {
-        max-width: 250px;
+    title.card-title {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: flex-end;
     }
     
     button {
         background: rgb(250, 177, 43);
+        // min-height: 40px;
+        // max-height: 40px;
     }
 }

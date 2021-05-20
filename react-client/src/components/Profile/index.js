@@ -24,11 +24,12 @@ const Profile = () => {
                 };
                 const { data } = await axios.get(`${process.env.API_URL}/api/users/${userID}/profile/`, options)
                 setUserData(data)
+                localStorage.setItem("jobbas", data.points)
             } catch {
                 console.warn("There's an error!!! Cannot fetch user profile details")
             }
         } profileData()
-    }, []);
+    }, [userData]);
 
     return (
         <>
