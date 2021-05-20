@@ -26,9 +26,9 @@ const Home = () => {
             <div className="row" id="homepage">
                 <div className="col-sm-3"><Sidebar /></div>
                 <div className="col">
-                    <div className="row">
+                    {/* <div className="row"> */}
                         <Header />
-                    </div>
+                    {/* </div> */}
                     <div style={visible}>
                         <Switch>
                             <Route path={`${match.path}/jobs`}>
