@@ -48,8 +48,7 @@ const Search = () => {
     }
 
   }
-
-
+  console.log(jobsData)
   return (
     <>
       <div className="" id="SearchBar-container">
