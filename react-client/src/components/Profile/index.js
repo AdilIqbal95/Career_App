@@ -5,6 +5,7 @@ import { useAuthContext } from '../../contexts/auth'
 import { ProfileImage } from '../../components'
 import { BsInfoCircle } from "react-icons/bs";
 import { FiLogOut } from "react-icons/fi";
+import { BiCalendarAlt } from "react-icons/bi";
 
 const Profile = () => {
     const { currentUser, logout, refresh } = useAuthContext();
@@ -41,20 +42,21 @@ const Profile = () => {
                             <>
                                 <ProfileImage />
 
-                                <div className="inputs" style={{textAlign: "center"}}>
+                                <div className="inputs" style={{ textAlign: "center" }}>
                                     {username && <h3 className="username">{username}</h3>}
                                     {userData ? <p>{userData.description}</p> : <p>Add a bio! ⤵️</p>}
                                     <button role="edit profile" onClick={() => { history.push('/home/editprofile') }} type="bio-save">Edit Profile</button>
                                 </div>
 
-                                <div className="game-stats">
-                                    <label htmlFor="level"> <h3>1 🏆</h3> </label>
-                                    <progress id="level" value="32" max="100"></progress>
+                                <div className="game-stats" style={{ textAlign: "center" }}>
+                                    <h5>Daily Streak:</h5>
+                                    <div className="calender">
+                                            <BiCalendarAlt /> <p className="number"> 1 </p></div>
                                 </div>
 
 
-                                <div className="coin-stats" style={{textAlign: "center"}}>
-                                    {userData ? <h3 >💰 {userData.points} Jobbas 💰</h3> : <p>Loading, please wait! 🙏🏻</p>}
+                                <div className="coin-stats" style={{ textAlign: "center" }}>
+                                    {userData ? <h3 style={{ fontSize: "28px" }}>💰 {userData.points} Jobbas 💰</h3> : <p>Loading, please wait! 🙏🏻</p>}
                                     <button onClick={() => { history.push('/home/jobbahut') }} type="exchange-coins">Exchange at JobbaHut!</button>
                                 </div>
                                 <footer>
