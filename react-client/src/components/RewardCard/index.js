@@ -6,26 +6,12 @@ import data from "../../temp_data";
 function RewardCard({reward}){
   
   const [collected, setCollected] = useState(false)
-  // const displayRewards = () => {
-  //   return (
-  //     <>
-  //     </>
-  //   )
-  // }
   
   function collectReward() {
     setCollected(true)
   }
 
-  // <section className="col" id="reward1">
-  //                           <h4>{reward.title}</h4>
-  //                           <p>collected!</p>
-  //                       </section>
-
-  // console.log('Rewards are: ',rewards)
-
   return (
- 
       <>
         <section className="reward">
           <h4>{reward.title}</h4>
@@ -36,8 +22,6 @@ function RewardCard({reward}){
             : <button onClick={collectReward}>Collect!</button>}
         </section>
       </>
-      
-    
   );
 
 }
