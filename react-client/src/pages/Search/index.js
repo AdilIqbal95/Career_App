@@ -10,6 +10,7 @@ const Search = () => {
   const [totalResults, setTotalResults] = useState()
   let input = inputData.input
   const [loading, setLoading] = useState(true)
+  const [dropVal, setDropVal] = useState()
 
   const handleInput = e => setInputData(prev => ({ ...prev, [e.target.name]: e.target.value }))
 
@@ -27,23 +28,33 @@ const Search = () => {
       const totalResults = response.data.totalResults
       setJobsData(data)
       setTotalResults(totalResults)
+      
       setLoading(false)
     } catch (err) {
       console.error(err.message)
     }
   }
 
+  const handleDropDown = (e) => {
+    setDropVal(e.target.value)
+
+    switch (e.target.value) {
+      case "Recent":
+        setJobsData(jobsData.sort( ( a , b ) => b.date - a.date));
+        break;
+      case "Popular":
+        setJobsData(jobsData.sort( ( a , b ) => b.applications - a.applications ));
+        break;  
+    }
+
+  }
+  console.log(jobsData)
   return (
     <>
       <div className="" id="SearchBar-container">
         <input name="input" onChange={handleInput} className="SearchBar col" type='text'></input>
         <div>
-          <select name="Filter_1" id="Filter_1">
-            <option value="All">All</option>
-            <option value="Jobs">Jobs</option>
-            <option value="Companies">Companies</option>
-          </select>
-          <select name="Filter_2" id="Filter_2">
+          <select value={dropVal} onChange={e => handleDropDown(e)} name="Filter" id="Filter">
             <option value="Recent">Recent</option>
             <option value="Popular">Popular</option>
           </select>
@@ -56,9 +67,12 @@ const Search = () => {
       <div class="row">
         <div>
           {loading ? <div></div>
-            : <>
+            : 
+            <>
               <h1> Results</h1>
-              <div><Results data={jobsData} /></div></>}
+              <div><Results data={jobsData}/></div>
+            </>
+            }
         </div>
       </div>
 
