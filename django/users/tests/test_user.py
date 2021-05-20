@@ -24,7 +24,6 @@ class TestUserViews(APITestCase):
         """
         Test an authenticated user can retrieve their information
         """
-        print(self.test_user.id)
         res = self.client.get(f'/api/users/{self.test_user.id}/')
         self.assertEqual(res.status_code, status.HTTP_200_OK)   
         self.assertEqual(res.data['username'], 'user')
