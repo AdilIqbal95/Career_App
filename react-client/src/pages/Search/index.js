@@ -1,7 +1,11 @@
 import React, {useState} from 'react';
-import { SearchBar, Results } from '../../components';
+import { Results } from '../../components';
+import data from '../../temp_data'
+
 
 const Search = () => {
+    // const [jobList, setJobList] = useState(data)
+    const tempData = data
     const [input, setInput] = useState("")
 
     const getJobs = () => {
@@ -34,7 +38,7 @@ const Search = () => {
             <div class="row">
               <div>
                 <h1> Results</h1>
-                <div><Results /></div>
+                <div><Results data={tempData} /></div>
               </div>
             </div>
 

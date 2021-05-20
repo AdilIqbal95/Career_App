@@ -16,7 +16,6 @@ function RewardCard({reward}){
         <section className="reward">
           <h4>{reward.title}</h4>
           <p>{reward.description}</p>
-          
           {collected ? 
             <p>Collected!</p>
             : <button onClick={collectReward}>Collect!</button>}
