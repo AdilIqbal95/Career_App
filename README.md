@@ -64,8 +64,9 @@ To start up our client:
 - [x] login/register path not rendering correctly. Solved with location.reload 
 - [x] /register rendering login form. Solved by refactoring and creating new register page (but i think there could be an even better solution that requires less code lines) 
 - [x] nav bar and side bar is protected from unauthed user, however main section content still shows upon logout. Solved with history.push to login and useState for style visibility change 
-- [ ] users and profile IDs not matching on back end
+- [x] users and profile IDs not matching on back end
 - [x] recursive functions error causing infinite requests to our django API. Solved by using useEffect 
+- [x] nav bar moving the whole main container on hover
  
 # Wins & Challenges
 
@@ -77,4 +78,5 @@ To start up our client:
 - Environment issues with python and setting up a virtual environment 
 - Django deployment - lots of configs and trial and error to get it work
 - Posting files and images to API 
+- Fetching from Reed API  
 
