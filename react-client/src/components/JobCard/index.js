@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 
 
 function JobCard({ job }) {
-
+        
   return (
       <div role="listitem" className="search-container">
-        <h2 style={{ marginTop: "1rem" }}>{job.jobTitle} | {job.employerName}</h2>
+        <h2>{job.jobTitle} | {job.employerName}</h2>
         <p>{job.jobDescription}</p>
       </div>
   );
