@@ -1,12 +1,31 @@
 #SearchBar-container {
-    input {
-        width: 50%;
-        border-radius: 5px;
-    }
-
+    display: flex;
+    flex-direction: row;
+    
     button {
-        width: 20%;
+        margin: 0;
+        height: 37px;
+        border-radius: 0 50px 50px 0;
+        padding: 0 1rem;
+        max-width: 80px;
     }
 
+    input::placeholder {
+        color: gray;
+    }
+
+    input[type="text"] {
+        border-radius: 50px 0 0 50px;
+        height: 40px;
+        padding: 0 1rem;
+        border: none;
+        width: 60%;
+        background: $app-background;
+        box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+    }
+
+    input:focus {
+        background-color: rgb(240, 223, 255);
+    }
    
 }
