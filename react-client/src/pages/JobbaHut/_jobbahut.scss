@@ -3,7 +3,7 @@
     display: flex; 
     flex-wrap: wrap;
     justify-content: flex-start;
-    align-items: center;
+    // align-items: center;
     max-width: 1100px;
 
     .reward {
@@ -13,8 +13,6 @@
         border: solid 2px rgb(250, 177, 43);
         margin: 1rem;
         width: 43%;
-        min-height: 250px;
-        max-height: 250px;
     }
 
     title.card-title {
