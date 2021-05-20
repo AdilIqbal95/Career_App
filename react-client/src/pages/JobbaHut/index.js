@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { RewardCard, OneTimeRewards } from '../../components';
+import { RewardCard, OneTimeRewards, FinalReward } from '../../components';
 import { useAuthContext } from '../../contexts/auth'
 import axios from "axios";
 
@@ -74,6 +74,8 @@ const JobbaHut = () => {
         {rewards.filter(r => !r.one_time).map(reward => (
           <RewardCard key={reward.id} reward={reward} />
         ))}
+
+        <FinalReward reward={rewards.find(r => r.id === 9)} />
 
         <h1>One Time Rewards - Updates automatically!</h1>
 
