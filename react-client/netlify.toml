@@ -4,6 +4,4 @@
 [[redirects]]   
     from = "/*" # redirect any path  
     to = "/index.html" # to this html page   
-    status = 200 # with this status   
-[build.environment]
-  API_URL = "https://jobbahunt.herokuapp.com"
+    status = 200 # with this status

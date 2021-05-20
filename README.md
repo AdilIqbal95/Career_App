@@ -31,12 +31,13 @@ To start up our client:
 ### Dependencies: 
    - Server: django
    
-   - Client: react, router-dom, react-router-dom, bootstrap, sass axios, jwt-decode
+   - Client: react, router-dom, react-router-dom, bootstrap, sass axios, jwt-decode, react-icons
 
 ### DevDependencies:
    - Server: 
    
    - Client: necessary loaders, webpack, babel, jest, react testing library, dotenv-webpack
+
 # Process 
 1. Project Plan! Set up Gists, Source of Truth, project Kanban board  
 2. Design and layout plan! MoqUps, dbDiagram, idea proposal slide deck 
@@ -56,20 +57,26 @@ To start up our client:
 6. Start stubbing out components and elements for each page  
 7. Install test devdepencies and add setup for test suite
 8. Add authentication and hide content for users that aren't logged in 
+9. Fetch from jobs API and from our Django API. Render data in correct components and pages  
 
 ## Bugs
 - [x] issue with switch statement / nested switch routes not working. Solved with useRouteMatch
 - [x] login/register path not rendering correctly. Solved with location.reload 
 - [x] /register rendering login form. Solved by refactoring and creating new register page (but i think there could be an even better solution that requires less code lines) 
 - [x] nav bar and side bar is protected from unauthed user, however main section content still shows upon logout. Solved with history.push to login and useState for style visibility change 
+- [x] users and profile IDs not matching on back end
+- [x] recursive functions error causing infinite requests to our django API. Solved by using useEffect 
+- [x] nav bar moving the whole main container on hover
  
 # Wins & Challenges
 
 ### Wins
 - Having a solid plan from early and great communication between the team!
 - Successfully deployed front end to Netlify and backend to Heroku
-- authentication between front and back end working smoothly 
+- Authentication between front and back end working smoothly 
 ### Challenges
 - Environment issues with python and setting up a virtual environment 
 - Django deployment - lots of configs and trial and error to get it work
+- Posting files and images to API 
+- Fetching from Reed API  
 

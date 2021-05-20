@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import { useAuthContext } from "../../contexts/auth";
+import Spinner from 'react-bootstrap/Spinner'
 
 const Login = () => {
     const { login } = useAuthContext();
@@ -18,6 +19,7 @@ const Login = () => {
         try {
             setLoading(true)
             await login(formData)
+            localStorage.setItem("username", formData.username);
             history.push('/home')
         } catch (err) {
             setLoading(false)
@@ -39,7 +41,7 @@ const Login = () => {
                 </div>
             </form>
             { error && <div id="error">{error}</div>}
-            { loading && <div id="loading">Logging in . . .</div>}
+            { loading && <div id="loading">Logging in <Spinner animation="border" variant="warning" role="status" /></div>}
         </>
     )
 }

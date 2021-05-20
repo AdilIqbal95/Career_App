@@ -38,7 +38,6 @@ export const AuthProvider = ({ children }) => {
     }
 
     const login = userData => {
-        console.log(userData)
         return new Promise(async (resolve, reject) => {
             try {
                 const options = {
@@ -49,8 +48,10 @@ export const AuthProvider = ({ children }) => {
                     throw new Error(`Login not authorised: ${data.detail}`);
                 }
                 localStorage.setItem("token", data.access);
+                localStorage.setItem("refresh", data.refresh)
                 const user = jwt_decode(data.access);
                 setCurrentUser(user);
+                localStorage.setItem("user_id", user.user_id)
                 resolve('Login successful')
             } catch (err) {
                 reject(`Login Error: ${err}`);
@@ -64,7 +65,24 @@ export const AuthProvider = ({ children }) => {
         history.push('/login')
     }
 
-    const auth = { register, login, logout, currentUser }
+    const refresh = async () => {
+        try {
+            let refreshToken = localStorage.getItem("refresh")
+            const options = {
+                headers: { 'Content-Type': 'application/json' }
+            }
+            const { data } = await axios.post(`${process.env.API_URL}/api/users/refresh-token/`, { "refresh": `${refreshToken}` }, options)
+            if (data.err) {
+                throw Error(data.detail)
+            }
+            localStorage.setItem("token", data.access);
+            console.log("success! your access token has been updated")
+        } catch (err) {
+            console.warn("cannot get new token")
+        }
+    }
+
+    const auth = { register, login, logout, refresh, currentUser }
 
     return (
         <AuthContext.Provider value={auth}>

@@ -10,20 +10,11 @@ const RegisterLanding = () => {
 
         return (
             <nav role="navigation">
-                <NavLink to='/login' activeClassName="current" onClick={loginClicked}>Login</NavLink>
-                <NavLink to='/register' activeClassName="current" onClick={registerClicked}>Register</NavLink>
+                <NavLink to='/login' activeClassName="current" onClick={() => { setRegistrationStatus(false) }}>Login</NavLink>
+                <NavLink to='/register' activeClassName="current" onClick={() => { setRegistrationStatus(true) }}>Register</NavLink>
             </nav >
         );
     }
-
-    function registerClicked() {
-        setRegistrationStatus(true)
-    }
-
-    function loginClicked() {
-        setRegistrationStatus(false)
-    }
-
 
     return (
         <>

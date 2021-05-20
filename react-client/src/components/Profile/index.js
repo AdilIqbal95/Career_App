@@ -1,55 +1,68 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-import { About } from '../../pages';
 import { useAuthContext } from '../../contexts/auth'
+import { ProfileImage } from '../../components'
+import { BsInfoCircle } from "react-icons/bs";
+import { FiLogOut } from "react-icons/fi";
 
 const Profile = () => {
-    const { currentUser, logout } = useAuthContext();
+    const { currentUser, logout, refresh } = useAuthContext();
+    const [userData, setUserData] = useState();
+    const [username, setUsername] = useState(localStorage.getItem('username'));
 
     const history = useHistory();
 
-    function handleClickToJobbahut() {
-        history.push('/home/jobbahut')
-    }
-
-    function goToEditProfile() {
-        history.push('/home/editprofile')
-    }
-
-    function goToAbout() {
-        history.push('/home/about')
-    }
+    useEffect(() => {
+        async function profileData() {
+            try {
+                // await refresh()
+                let token = localStorage.getItem("token")
+                let userID = localStorage.getItem("user_id")
+                const options = {
+                    headers: { "Authorization": `Bearer ${token}` }
+                };
+                const { data } = await axios.get(`${process.env.API_URL}/api/users/${userID}/profile/`, options)
+                setUserData(data)
+                localStorage.setItem("jobbas", data.points)
+            } catch {
+                console.warn("There's an error!!! Cannot fetch user profile details")
+            }
+        } profileData()
+    }, [userData]);
 
     return (
         <>
             <div className="profile-container">
                 <main id="profile">
-                    {!currentUser ?
-                        <h3 style={{ display: "flex", alignItems: "center" }}>nothing to see here!! 🔒</h3> :
-                        <>
-                            <img src="http://comic-cons.xyz/wp-content/uploads/Star-Wars-avatar-icon-Jabba-the-Hutt.png" className="profile-pic"></img>
-                            <div className="username">Jobba</div>
+                    <div className="wrapper">
+                        {!currentUser ?
+                            <h3 style={{ display: "flex", alignItems: "center" }}>nothing to see here!! 🔒</h3> :
+                            <>
+                                <ProfileImage />
 
-                            <div className="game-stats">
-                                <label htmlFor="level"> <h3>10 🏆</h3> </label>
-                                <progress id="level" value="32" max="100"></progress>
-                            </div>
+                                <div className="inputs" style={{textAlign: "center"}}>
+                                    {username && <h3 className="username">{username}</h3>}
+                                    {userData ? <p>{userData.description}</p> : <p>Add a bio! ⤵️</p>}
+                                    <button role="edit profile" onClick={() => { history.push('/home/editprofile') }} type="bio-save">Edit Profile</button>
+                                </div>
 
-                            <div className="inputs">
-                                <label>Bio</label>
-                                <input type="bio" placeholder="give a short description" />
-                                <button onClick={goToEditProfile} type="bio-save">Edit Profile</button>
-                            </div>
+                                <div className="game-stats">
+                                    <label htmlFor="level"> <h3>1 🏆</h3> </label>
+                                    <progress id="level" value="32" max="100"></progress>
+                                </div>
 
-                            <div className="coin-stats">
-                                <h3>178💰</h3>
-                                <button onClick={handleClickToJobbahut} type="exchange-coins">Exchange at JobbaHut!</button>
-                            </div>
-                            <footer>
-                                <button onClick={goToAbout} id="info" role="more info">infooo</button>
-                                <button role="logout" id="logout" onClick={logout}>Logout</button>
-                            </footer>
-                        </>}
+
+                                <div className="coin-stats" style={{textAlign: "center"}}>
+                                    {userData ? <h3 >💰 {userData.points} Jobbas 💰</h3> : <p>Loading, please wait! 🙏🏻</p>}
+                                    <button onClick={() => { history.push('/home/jobbahut') }} type="exchange-coins">Exchange at JobbaHut!</button>
+                                </div>
+                                <footer>
+                                    <button onClick={() => { history.push('/home/about') }} id="info" role="more info"><BsInfoCircle /></button>
+                                    <button role="logout" id="logout" onClick={logout}><FiLogOut /></button>
+                                </footer>
+                            </>}
+                    </div>
                 </main>
             </div>
 

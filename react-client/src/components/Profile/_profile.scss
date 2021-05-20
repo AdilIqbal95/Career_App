@@ -1,6 +1,6 @@
 .profile-container {
     height: 100vh;
-    position: fixed;
+    position: relative;
 
     footer {
         display: flex;
@@ -11,6 +11,30 @@
             width: 50%
         }
     }
+
+    .wrapper {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+
+        .pic-wrapper {
+            display: flex;
+            justify-content: center;
+
+            input {
+                position: absolute;
+                z-index: 1;
+                margin: 1rem;
+            }
+
+            button {
+                position: absolute;
+            }
+        }
+
+    }
 }
 
 #profile {
@@ -18,10 +42,13 @@
     height: 95vh;
     position: relative;
     border-radius: 20px;
-    padding: 40px;
     box-sizing: border-box;
     background: $app-background;
     box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    justify-content: center;
     
     body {
     margin: 1rem;
@@ -36,7 +63,7 @@
     overflow: hidden;
     }
 
-    .profile-pic {
+    .profile-pic, .loader {
     height: 100px;
     width: 100px;
     margin: auto;
@@ -45,13 +72,24 @@
     box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
     }
 
+    form.change-profile-pic {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+
+        button {
+            width: auto;
+        }
+    }
+
 
     .username {
-    margin: 10px;
     font-weight: 900;
     font-size: 1.5rem;
     color: #de70ff;
-    letter-spacing: 1px;
+    letter-spacing: 4px;
+    padding: none;
     }
 
     label, input {
@@ -103,12 +141,12 @@
     box-shadow: none;
     }
     
-    .game-stats, .coin-stats, .inputs, footer {
-        margin-top: 3rem;
-    }
+    // .game-stats, .coin-stats, .inputs, footer {
+    //     margin-top: 3rem;
+    // }
 
     button[type="exchange-coins"] {
-        background: rgb(243, 190, 75);
+        background: rgb(250, 177, 43);
     }
 
     
