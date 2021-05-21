@@ -9,9 +9,8 @@ JobbaHunt is a job search application built in full stack with react on the clie
 The the aim of JobbaHunt is to improve the job searching process which can be long, stressful and demotivating. We hope the casual language, emojis, and rewards will brighten up the process and motivate users to continue job hunting. 
 
 # Installation and Usage
-- Clone or download this repo  
-
-- Navigate to root directory of this repository and open the terminal   
+Clone or download this repo.    
+Navigate to root directory of this repository and open the terminal:   
 
 To start up our server:     
 `pipenv shell`   
