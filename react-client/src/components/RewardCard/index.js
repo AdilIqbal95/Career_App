@@ -14,6 +14,11 @@ function RewardCard({ reward }) {
     const options = {
       headers: { "Authorization": `Bearer ${token}` }
     };
+    // TODO: Fix daily streak to update 
+    if (reward.id === 4) {
+      const streak = await (await axios.get(`${process.env.API_URL}/api/users/${userID}/profile/`, options)).data.daily_streak
+      await axios.patch(`${process.env.API_URL}/api/users/${userID}/profile/`, { "daily_streak": streak + 1 }, options)
+    }
     try {
       await axios.post(`${process.env.API_URL}/api/users/${userID}/rewards/`, { "reward": reward.id }, options)
       setCollected(true)
