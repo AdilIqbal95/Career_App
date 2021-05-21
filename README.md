@@ -5,8 +5,10 @@
 ![Heroku](https://pyheroku-badge.herokuapp.com/?app=jobbahunt&style=flat)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+JobbaHunt is a job search application built in full stack with react on the client, django REST framework API on the server and a postgreSQL datatbase. Users can create an account, search jobs on Reed API, save jobs, update progress of job applications. Interactions with the app allows the user to collect points that can be exchanged for rewards e.g. virtual coffees with CEOs, linkedIn connections... etc etc..
+
 ## Description 
-A fullstack project....
+The the aim of JobbaHunt is to improve the job searching process which a lot of us here know can be long, stressful and demotivating. As the goal of JobbaHunt is to help users get their first job, our focus is on growing amount of users, rather than increasing usage length and that is why we encourage WoM marketing and increasing user base.  
 
 # Installation and Usage
 - Clone or download this repo  
@@ -24,14 +26,17 @@ It should load on: http://127.0.0.1:8000/
 To start up our client:   
 `cd react-client`   
 `npm install`     
-`npm run dev`    
+`npm run dev`   
+
+It should load on: http://localhost:8080/
 
 # Technologies
 - HTML, CSS, Python, JavaScript   
+- 
 ### Dependencies: 
    - Server: django
    
-   - Client: react, router-dom, react-router-dom, bootstrap, sass axios, jwt-decode, react-icons
+   - Client: react, router-dom, react-router-dom, bootstrap, sass axios, jwt-decode, react-icons  
 
 ### DevDependencies:
    - Server: 
@@ -74,9 +79,19 @@ To start up our client:
 - Having a solid plan from early and great communication between the team!
 - Successfully deployed front end to Netlify and backend to Heroku
 - Authentication between front and back end working smoothly 
+
 ### Challenges
 - Environment issues with python and setting up a virtual environment 
 - Django deployment - lots of configs and trial and error to get it work
 - Posting files and images to API 
 - Fetching from Reed API  
+
+# Future Features
+- Direct platform between employers and employees
+- Mail service for alerts and notifications
+- Mobile application using react native
+
+# Slide Deck
+
+https://www.canva.com/design/DAEfBpDPLZQ/GzCkC87sbsY2tRo8vjjX5g/view?utm_content=DAEfBpDPLZQ&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink
 
