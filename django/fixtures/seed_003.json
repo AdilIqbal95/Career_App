@@ -1,0 +1,221 @@
+[
+    {
+        "model": "users.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$260000$4e9hjQWIObU06CvDs43Pab$/uev8PQujsHzMvjRG7p/uTq5iolpE30cmCzhblbnM0s=",
+            "last_login": "2021-05-19T13:54:50.849Z",
+            "is_superuser": true,
+            "username": "duck",
+            "first_name": "",
+            "last_name": "",
+            "email": "duck@duck.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2021-05-17T19:45:55.943Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 2,
+        "fields": {
+            "password": "yoopyoop",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "yoppidy",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2021-05-17T21:48:39Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 3,
+        "fields": {
+            "password": "password",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "themonstermash",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2021-05-18T09:55:02Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 8,
+        "fields": {
+            "password": "pbkdf2_sha256$260000$BsEvE0HWEOcHZ78WOTEsfG$rp+Jt5qvrNOGPl61bJTgptr+FyjlHKvey0OBQp0uxWc=",
+            "last_login": "2021-05-19T11:16:17.368Z",
+            "is_superuser": false,
+            "username": "dogdays",
+            "first_name": "",
+            "last_name": "",
+            "email": "noodles@noodle.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2021-05-19T10:41:59.250Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.profile",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "description": "",
+            "profile_image": "profiles/image/1.jpg",
+            "cv": "",
+            "points": 0,
+            "education": null,
+            "previous_experience": null,
+            "desired_job": null
+        }
+    },
+    {
+        "model": "users.profile",
+        "pk": 2,
+        "fields": {
+            "user": 2,
+            "description": "2",
+            "profile_image": "profiles/image/2.jpg",
+            "cv": "profiles/cv/2.pdf",
+            "points": 80,
+            "education": null,
+            "previous_experience": null,
+            "desired_job": null
+        }
+    },
+    {
+        "model": "users.profile",
+        "pk": 3,
+        "fields": {
+            "user": 3,
+            "description": "Hi, I'm a monster studying at Monster's university to be a scarier Monster. Rawr!",
+            "profile_image": "",
+            "cv": "",
+            "points": 0,
+            "education": null,
+            "previous_experience": null,
+            "desired_job": null
+        }
+    },
+    {
+        "model": "users.profile",
+        "pk": 8,
+        "fields": {
+            "user": 8,
+            "description": "",
+            "profile_image": "",
+            "cv": "",
+            "points": 0,
+            "education": null,
+            "previous_experience": null,
+            "desired_job": null
+        }
+    },
+    {
+        "model": "users.application",
+        "pk": 1,
+        "fields": {
+            "user_profile": 1,
+            "job_title": "Noodle Farmer",
+            "company": "Noodle Farming inc.",
+            "description": "We need someone who can farm noodles",
+            "url": "http://noodles.com",
+            "saved": false,
+            "applied": false,
+            "interviewed": false,
+            "offered": false,
+            "accepted": false
+        }
+    },
+    {
+        "model": "users.application",
+        "pk": 2,
+        "fields": {
+            "user_profile": 3,
+            "job_title": "Temp Monster",
+            "company": "Shiver Me Bones",
+            "description": "Need monster for temp work, scaring people into wearing masks.",
+            "url": "http://monsters-for-vaccines.com",
+            "saved": false,
+            "applied": false,
+            "interviewed": false,
+            "offered": false,
+            "accepted": false
+        }
+    },
+    {
+        "model": "users.userreward",
+        "pk": 32,
+        "fields": {
+            "user": 2,
+            "reward": 4,
+            "date_claimed": "2021-05-18"
+        }
+    },
+    {
+        "model": "rewards.reward",
+        "pk": 4,
+        "fields": {
+            "title": "Upload CV",
+            "description": "Add your CV to profile so people can know more about you!",
+            "point_change": 10,
+            "one_time": true
+        }
+    },
+    {
+        "model": "rewards.reward",
+        "pk": 5,
+        "fields": {
+            "title": "Submitted Application",
+            "description": "Great job! We've got our fingers crossed 🤞",
+            "point_change": 5,
+            "one_time": false
+        }
+    },
+    {
+        "model": "rewards.reward",
+        "pk": 6,
+        "fields": {
+            "title": "Uploaded Profile Image",
+            "description": "Look at you, looking all professional! 👩‍💼",
+            "point_change": 10,
+            "one_time": true
+        }
+    },
+    {
+        "model": "rewards.reward",
+        "pk": 7,
+        "fields": {
+            "title": "Daily Reward",
+            "description": "Keep that streak up! 🔥",
+            "point_change": 1,
+            "one_time": false
+        }
+    },
+    {
+        "model": "rewards.reward",
+        "pk": 8,
+        "fields": {
+            "title": "Meeting with a VIP",
+            "description": "Holy jobbas batman! You've got access to a meeting with one of a variety of experts, who you can talk to about anything!",
+            "point_change": -200,
+            "one_time": false
+        }
+    }
+]

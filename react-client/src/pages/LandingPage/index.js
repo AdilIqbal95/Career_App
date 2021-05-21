@@ -10,28 +10,20 @@ const LandingPage = () => {
 
         return (
             <nav role="navigation">
-                <NavLink to='/login' activeClassName="current" onClick={loginClicked}>Login</NavLink>
-                <NavLink to='/register' activeClassName="current" onClick={registerClicked}>Register</NavLink>
+                <NavLink to='/login' activeClassName="current" onClick={() => { setRegistrationStatus(false) }}>Login</NavLink>
+                <NavLink to='/register' activeClassName="current" onClick={() => { setRegistrationStatus(true) }}>Register</NavLink>
             </nav >
         );
     }
-
-    function registerClicked() {
-        setRegistrationStatus(true)
-    }
-
-    function loginClicked() {
-        setRegistrationStatus(false)
-    }
-
     return (
         <>
             <main id="login">
+                <div className="landing-box">
+                <h1>JobbaHunt</h1>
                 {nav()}
                 {registrationStatus ? <Register /> : <Login />}
-
-                <div className="background"></div>
-
+                </div>
+                
             </main>
         </>
     )

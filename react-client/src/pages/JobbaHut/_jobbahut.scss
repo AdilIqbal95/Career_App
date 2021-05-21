@@ -1,23 +1,33 @@
 #jobbahut {
+    overflow-y: auto;
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    // align-items: center;
+    max-width: 1100px;
 
-    .first-row-container {
-        display: flex;
-        align-items: center;
-    }
-
-    #daily-reward, #trophy-collection {
+    .reward {
         background-color: white;
-        display: inline-block;
-        padding: 1.5rem;
+        padding: 2rem;
         border-radius: 10px;
-        border: dashed 4px rgb(250, 177, 43);
+        border: solid 2px rgb(250, 177, 43);
         margin: 1rem;
-        min-height: 200px;
-        max-height: 200px;
+        width: 43%;
     }
 
-    #daily-reward {
-        max-width: 250px;
+    title.card-title {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    button {
+        background: rgb(250, 177, 43);
+        // min-height: 40px;
+        // max-height: 40px;
     }
 }
-

@@ -1,0 +1,20 @@
+.myjob-container {
+    background: white;
+    width: 70%;
+    border: 2px solid hotpink;
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1rem;
+
+    title.card-title{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        button {
+            width: 7%;
+            margin-top: 0;
+            background: none;
+        }
+    }     
+}

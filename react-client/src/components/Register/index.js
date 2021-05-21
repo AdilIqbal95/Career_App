@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { useAuthContext } from "../../contexts/auth"
 import { useHistory } from 'react-router-dom';
+import Spinner from 'react-bootstrap/Spinner'
 
 const Register = () => {
     const { register, login } = useAuthContext();
@@ -55,7 +56,7 @@ const Register = () => {
                 </div>
             </form>
             { error && <div id="error">{error}</div>}
-            { loading && <div id="loading">Creating account . . .</div>}
+            { loading && <div id="loading">Creating account <Spinner animation="border" variant="warning" role="status" /></div>}
         </>
     )
 }

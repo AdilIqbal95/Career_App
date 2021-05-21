@@ -1,4 +1,4 @@
-#editprofile {
+#editprofile, #editaccount {
   
     label.user-details, input, select {
         display: block;
@@ -38,9 +38,15 @@
         box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
     }
 
+    .button-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
     button {
         display: block;
-        width: 10%;
+        width: 13%;
         border: none;
         outline: none;
         box-sizing: border-box;

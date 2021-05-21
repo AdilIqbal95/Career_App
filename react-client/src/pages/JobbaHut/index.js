@@ -1,59 +1,71 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { RewardCard, OneTimeRewards, FinalReward } from '../../components';
+import { useAuthContext } from '../../contexts/auth'
+import axios from "axios";
+import Spinner from 'react-bootstrap/Spinner'
 
 const JobbaHut = () => {
-    const [showCollected, setCollected] = useState(true)
+  const { refresh } = useAuthContext();
+  const [rewards, setRewards] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    function dailyReward() {
-        return (
-            <>
-                {showCollected ?
-                    <section id="daily-reward">
-                        <h4>Daily Reward 🎁</h4>
-                        <p ><em>"Morning Motivation and add some motivational quote here!"</em></p>
-                        <button onClick={collectReward}>Collect!</button>
-                    </section> : <section id="daily-reward">
-                        <h4>Daily Reward 🎁</h4>
-                        <p>collected!</p>
-                    </section>
-                }
-            </>
-        )
+  const getRewards = async () => {
+    await refresh()
+    try {
+      let token = localStorage.getItem("token")
+      let userID = localStorage.getItem("user_id")
+      const options = {
+        headers: { "Authorization": `Bearer ${token}` }
+      };
+      const response = await axios.get(`${process.env.API_URL}/api/rewards/`, options)
+      const data = response.data
+      setRewards(data)
+      setLoading(false)
+    } catch (err) {
+      console.error(err.message)
     }
+  }
 
-    function collectReward() {
-        setCollected(false)
-    }
+  function collectReward() {
+    setCollected(false)
+  }
 
-    // function Trophies({data}){
-    //     return (
-    //         data.map(item => <span><h3 className="trophies">{item.login}</h3><TrophyAvatar url={item.avatar_url}/></span>)
-    //     )
-    // }
+  useEffect(() => {
+    getRewards();
+  }, []);
 
-    // function TrophyAvatar({url}) {
-    //     return (
-    //         <img src={url} className="user-avatar" alt="github-user-avatar"/>
-    //     )
-    // }
-
+  function renderFinalReward() {
+    let finalReward = rewards.find(r => r.id === 9);
     return (
-        <>
-            <div className="main-container" id="jobbahut">
-                <header>
-                    <h1>JobbaHut</h1>
-                    <div className="first-row-container">
-                        {dailyReward()}
-                        <section id="trophy-collection">
-                            <h4>My Trophies 🏆</h4>
-                            {/* <Trophies data={trophies} /> */}
-
-                        </section>
-                    </div>
-                </header>
-
-            </div>
-        </>
+      finalReward && <FinalReward reward={finalReward} />
     )
+  }
+
+  console.log(rewards.find(r => r.id === 9))
+
+  return (
+    <>    <h1>JobbaHut</h1>
+      <div className="main-container" id="jobbahut">
+        {loading ? <div id="loading"> <Spinner animation="border" variant="warning" role="status" /></div> :
+          <>
+            {
+              rewards.filter(r => !r.one_time && r.id !== 9).map(reward => (
+                <RewardCard key={reward.id} reward={reward} />
+              ))
+            }
+            {renderFinalReward()}
+         
+            <h1>One Time Rewards - Updates automatically!</h1>
+
+            {rewards.filter(r => r.one_time).map(reward => (
+              <OneTimeRewards key={reward.id} reward={reward} />
+            ))}
+          </>
+        }
+
+      </div>
+    </>
+  )
 }
 
 export default JobbaHut;
