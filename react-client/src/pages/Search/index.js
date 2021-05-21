@@ -28,28 +28,28 @@ const Search = () => {
       const totalResults = response.data.totalResults
       setJobsData(data)
       setTotalResults(totalResults)
-      
+
       setLoading(false)
     } catch (err) {
       console.error(err.message)
     }
   }
-  
+
   const createDate = (data) => {
-    let [day,month,year] = data.date.split('/')
-    return new Date(year,month,day)
-    }
+    let [day, month, year] = data.date.split('/')
+    return new Date(year, month, day)
+  }
   const handleDropDown = (e) => {
     setDropVal(e.target.value)
     switch (e.target.value) {
       case "Recent":
-        setJobsData(jobsData.sort( ( a , b ) => {
-        return createDate(b) - createDate(a)
+        setJobsData(jobsData.sort((a, b) => {
+          return createDate(b) - createDate(a)
         }))
         break;
       case "Popular":
-        setJobsData(jobsData.sort( ( a , b ) => b.applications - a.applications ));
-        break;  
+        setJobsData(jobsData.sort((a, b) => b.applications - a.applications));
+        break;
     }
 
   }
@@ -58,7 +58,7 @@ const Search = () => {
       <main className="main-container">
 
         <div className="" id="SearchBar-container">
-          <input name="input" onChange={handleInput} placeholder="Find your dream job today" className="SearchBar" type='text'></input>
+          <input name="input" onChange={handleInput} autoComplete="off" placeholder="Find your dream job today" className="SearchBar" type='text'></input>
           <button onClick={getJobs} className="col"><i id="search" className="fa fa-search" aria-hidden="true"></i></button>
           <select style={{ marginLeft: "1rem" }} value={dropVal} onChange={e => handleDropDown(e)} name="Filter" id="Filter">
             <option value="Recent">Recent</option>
@@ -73,7 +73,7 @@ const Search = () => {
             : <>
               <h1 style={{ display: "none" }}> Results</h1>
               <div><Results data={jobsData} /></div></>}
-    </div>
+        </div>
       </main>
 
     </>
