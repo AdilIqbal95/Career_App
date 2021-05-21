@@ -1,14 +1,10 @@
 # Project: JobbaHunt
-[![Netlify Status](https://api.netlify.com/api/v1/badges/a219f92e-0912-4232-808e-746b42373a08/deploy-status)](https://app.netlify.com/sites/jobbahunt/deploys)
+🔍 [![Netlify Status](https://api.netlify.com/api/v1/badges/a219f92e-0912-4232-808e-746b42373a08/deploy-status)](https://app.netlify.com/sites/jobbahunt/deploys) 🚀 ![Heroku](https://pyheroku-badge.herokuapp.com/?app=jobbahunt&style=flat) ⚖️ [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-
-![Heroku](https://pyheroku-badge.herokuapp.com/?app=jobbahunt&style=flat)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-JobbaHunt is a job search application built in full stack with react on the client, django REST framework API on the server and a postgreSQL datatbase. Users can create an account, search jobs on Reed API, save jobs, update progress of job applications. Interactions with the app allows the user to collect points that can be exchanged for rewards e.g. virtual coffees with CEOs, linkedIn connections... etc etc..
+JobbaHunt is a job search application built in full stack with react on the client, django REST framework API on the server and a postgreSQL datatbase. Users can create an account, search jobs on Reed API, save jobs, update progress of job applications. Interactions with the app allows the user to collect points that can be exchanged for rewards e.g. virtual coffees with CEOs, linkedIn connections, etc.
 
 ## Description 
-The the aim of JobbaHunt is to improve the job searching process which a lot of us here know can be long, stressful and demotivating. As the goal of JobbaHunt is to help users get their first job, our focus is on growing amount of users, rather than increasing usage length and that is why we encourage WoM marketing and increasing user base.  
+The the aim of JobbaHunt is to improve the job searching process which can be long, stressful and demotivating. We hope the casual language, emojis, and rewards will brighten up the process and motivate users to continue job hunting. 
 
 # Installation and Usage
 - Clone or download this repo  
@@ -31,23 +27,26 @@ To start up our client:
 It should load on: http://localhost:8080/
 
 # Technologies
-- HTML, CSS, Python, JavaScript   
+- HTML, CSS, Python, JavaScript, docker, SQL
 - 
 ### Dependencies: 
-   - Server: django
+   - Server: django, JWT, django REST framework
    
-   - Client: react, router-dom, react-router-dom, bootstrap, sass axios, jwt-decode, react-icons  
+   - Client: react, router-dom, react-router-dom, bootstrap, react-bootstrap, sass, axios, jwt-decode, react-icons  
 
 ### DevDependencies:
-   - Server: 
+   - Server: gunicorn, whitenoise, psycopg2
    
    - Client: necessary loaders, webpack, babel, jest, react testing library, dotenv-webpack
 
 # Process 
-1. Project Plan! Set up Gists, Source of Truth, project Kanban board  
-2. Design and layout plan! MoqUps, dbDiagram, idea proposal slide deck 
-3. Set up file structure for the decided tech stack - django and react
-4. Prepare for deployment! And deploy!
+1. Project Plan! Set up Gists, Source of Truth, project Kanban board and use MosCow method for prioritisation  
+2. Design and layout plan! MoqUps, dbDiagram, idea proposal slide deck  
+3. Set up file structure for the decided tech stack - django and react  
+4. Decided to focus on sustainable developement by setting realistic goals in daily stand ups 
+5. Set up ticket system with estimated completion timeframes
+6. Prepare for deployment! And deploy! Deploy daily to welcome new changes! 
+5. Mob/pair programming to collaborate and we had an open call available all day  
 
 ## Changelog
 ### Django-API
@@ -72,6 +71,7 @@ It should load on: http://localhost:8080/
 - [x] users and profile IDs not matching on back end
 - [x] recursive functions error causing infinite requests to our django API. Solved by using useEffect 
 - [x] nav bar moving the whole main container on hover
+- [ ] users can add daily streak multiple times a day 
  
 # Wins & Challenges
 
@@ -79,17 +79,19 @@ It should load on: http://localhost:8080/
 - Having a solid plan from early and great communication between the team!
 - Successfully deployed front end to Netlify and backend to Heroku
 - Authentication between front and back end working smoothly 
+- Effective use of useState to render updates dynamically   
 
-### Challenges
+### Challenges  
 - Environment issues with python and setting up a virtual environment 
-- Django deployment - lots of configs and trial and error to get it work
-- Posting files and images to API 
-- Fetching from Reed API  
+- Django deployment - lots of configs and trial and error to get it work   
+- Posting files and images to API     
+- Fetching from Reed API    
+- Issues with migrations during deployment  
 
 # Future Features
-- Direct platform between employers and employees
-- Mail service for alerts and notifications
-- Mobile application using react native
+- Direct platform between employers and employees   
+- Mail service for alerts and notifications (django mail)   
+- Mobile application using react native   
 
 # Slide Deck
 
