@@ -53,7 +53,7 @@ const Profile = () => {
                                 <div className="game-stats" style={{ textAlign: "center" }}>
                                     <h5>Daily Streak:</h5>
                                     <div className="calender">
-                                        <BiCalendarAlt /> {userData && <p className="number">{userData.daily_streak} </p>}</div>
+                                        <BiCalendarAlt /> <p className="number">{userData && userData.daily_streak || 0}</p></div>
                                 </div>
 
 
