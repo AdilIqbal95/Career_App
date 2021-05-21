@@ -15,13 +15,15 @@ const LandingPage = () => {
             </nav >
         );
     }
-
     return (
         <>
             <main id="login">
+                <div className="landing-box">
+                <h1>JobbaHunt</h1>
                 {nav()}
                 {registrationStatus ? <Register /> : <Login />}
-
+                </div>
+                
             </main>
         </>
     )

@@ -4,7 +4,7 @@ import { useAuthContext } from '../../contexts/auth';
 
 function RewardCard({ reward }) {
   const [collected, setCollected] = useState(false)
-
+  const { updateProfile } = useAuthContext();
   const [available, setAvailable] = useState(true);
   const [error, setError] = useState("")
 
@@ -17,6 +17,7 @@ function RewardCard({ reward }) {
     try {
       await axios.post(`${process.env.API_URL}/api/users/${userID}/rewards/`, { "reward": reward.id }, options)
       setCollected(true)
+      updateProfile()
     } catch (err) {
       setAvailable(false)
       setError(`❌ Sorry, not enough points!`)

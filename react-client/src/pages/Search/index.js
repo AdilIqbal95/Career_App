@@ -59,7 +59,7 @@ const Search = () => {
 
         <div className="" id="SearchBar-container">
           <input name="input" onChange={handleInput} placeholder="Find your dream job today" className="SearchBar" type='text'></input>
-          <button onClick={getJobs} className="col"><i id="search" class="fa fa-search" aria-hidden="true"></i></button>
+          <button onClick={getJobs} className="col"><i id="search" className="fa fa-search" aria-hidden="true"></i></button>
           <select style={{ marginLeft: "1rem" }} value={dropVal} onChange={e => handleDropDown(e)} name="Filter" id="Filter">
             <option value="Recent">Recent</option>
             <option value="Popular">Popular</option>

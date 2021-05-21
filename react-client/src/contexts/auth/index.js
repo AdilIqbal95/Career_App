@@ -9,6 +9,7 @@ export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
     const [ currentUser, setCurrentUser ] = useState(getCurrentUser());
+    const [profile, setProfile] = useState(false);
     const history = useHistory();
 
     function getCurrentUser() {
@@ -82,7 +83,11 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
-    const auth = { register, login, logout, refresh, currentUser }
+    const updateProfile = () => {
+        setProfile(prev =>!prev)
+    }
+
+    const auth = { register, login, logout, refresh, currentUser, updateProfile, profile }
 
     return (
         <AuthContext.Provider value={auth}>
