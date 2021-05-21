@@ -3,6 +3,8 @@
 
 JobbaHunt is a job search application built in full stack with react on the client, django REST framework API on the server and a postgreSQL datatbase. Users can create an account, search jobs on Reed API, save jobs, update progress of job applications. Interactions with the app allows the user to collect points that can be exchanged for rewards e.g. virtual coffees with CEOs, linkedIn connections, etc.
 
+![JobbaHunt](https://user-images.githubusercontent.com/58271566/119194826-96485a80-ba7b-11eb-9fef-efdb83e4b007.gif)
+
 ## Description 
 The the aim of JobbaHunt is to improve the job searching process which can be long, stressful and demotivating. We hope the casual language, emojis, and rewards will brighten up the process and motivate users to continue job hunting. 
 
