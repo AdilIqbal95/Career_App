@@ -19,11 +19,14 @@ const RegisterLanding = () => {
     return (
         <>
             <main id="login">
+                
+                <div className="landing-box">
+                <h1>JobbaHunt</h1>
                 {nav()}
                 {registrationStatus ? <Login /> : <Register />}
 
                 <div className="background"></div>
-
+                </div>
             </main>
         </>
     )
