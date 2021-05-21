@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import { useAuthContext } from '../../contexts/auth'
 import axios from 'axios'
+import { RiDeleteBack2Line } from "react-icons/ri";
 
-const ApplicationCard = ({ job }) => {
+const ApplicationCard = ({ job, handleDelete }) => {
     const { refresh } = useAuthContext();
     const [score, setScore] = useState(0)
     const [error, setError] = useState("")
@@ -11,11 +12,12 @@ const ApplicationCard = ({ job }) => {
     const [progress, setProgress] = useState('0');
 
     const handleUpdateApplication = (e) => {
-        setProgress( e.target.value )
+        setProgress(e.target.value)
     }
 
     useEffect(() => {
         const updateStatus = async () => {
+            await refresh()
             try {
                 let token = localStorage.getItem("token")
                 let userID = localStorage.getItem("user_id")
@@ -27,7 +29,6 @@ const ApplicationCard = ({ job }) => {
                 setStatus(data)
             } catch (err) {
                 setError(`❌ Sorry, try again! ${err}`)
-                await refresh()
             }
         }
         updateStatus()
@@ -36,7 +37,10 @@ const ApplicationCard = ({ job }) => {
     return (
         <>
             <article className="myjob-container">
-                <h3><a href={job.url} target="_blank">{job.job_title}</a></h3>
+                <title className="card-title">
+                  <h3><a href={job.url} target="_blank">{job.job_title}</a></h3>
+                <button onClick={handleDelete} ><RiDeleteBack2Line /></button>
+                </title>
                 <h4>{job.company}</h4>
                 <p>{job.description}</p>
                 <form style={{ display: "flex", justifyContent: "flex-end", textAlign: "center" }}>
@@ -60,7 +64,7 @@ const ApplicationCard = ({ job }) => {
                         <ProgressBar striped variant="warning" now={25} key={3} label="offered" />}
                     {status.accepted &&
                         <ProgressBar striped variant="success" now={25} key={4} label="accepted" />}
-                </ProgressBar>              
+                </ProgressBar>
                 {error && <div id="error">{error}</div>}
 
             </article>
@@ -68,7 +72,5 @@ const ApplicationCard = ({ job }) => {
     )
 }
 
-
-// add state button dropdown - button needs to progress the bar
 
 export default ApplicationCard;
