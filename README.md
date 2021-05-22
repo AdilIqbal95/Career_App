@@ -1,7 +1,7 @@
 # Project: JobbaHunt
 🔍 [![Netlify Status](https://api.netlify.com/api/v1/badges/a219f92e-0912-4232-808e-746b42373a08/deploy-status)](https://app.netlify.com/sites/jobbahunt/deploys) 🚀 ![Heroku](https://pyheroku-badge.herokuapp.com/?app=jobbahunt&style=flat) ⚖️ [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-JobbaHunt is a job search application built in full stack with react on the client, django REST framework API on the server and a postgreSQL datatbase. Users can create an account, search jobs on Reed API, save jobs, update progress of job applications. Interactions with the app allows the user to collect points that can be exchanged for rewards e.g. virtual coffees with CEOs, LinkedIn connections, etc.
+JobbaHunt is a job search application built in full stack with react, django REST framework, and is connected to PostgreSQL database and AWS. Users can create an account, search jobs on Reed API, save jobs, update progress of job applications. Interactions with the app allows the user to collect points that can be exchanged for rewards e.g. virtual coffees with CEOs, LinkedIn connections, etc.
 
 ![JobbaHunt](https://user-images.githubusercontent.com/58271566/119194826-96485a80-ba7b-11eb-9fef-efdb83e4b007.gif)
 
@@ -18,7 +18,7 @@ To start up our server:
 `cd django`   
 `python manage.py runserver`   
 
-To start up the PostgreSQL database in a docker container:
+To start up the PostgreSQL database in a docker container:   
 `docker-compose up`
 
 It should load on: http://127.0.0.1:8000/
@@ -93,7 +93,7 @@ It should load on: http://localhost:8080/
 - Having a solid plan from early and great communication between the team!
 - Successfully deployed front end to Netlify and backend to Heroku
 - Authentication between front and back end working smoothly 
-- Effective use of useState to render updates dynamically   
+- Great use of useEffect to render updates dynamically   
 
 ### Challenges  
 - Environment issues with python and setting up a virtual environment 
