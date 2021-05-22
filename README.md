@@ -18,6 +18,9 @@ To start up our server:
 `cd django`   
 `python manage.py runserver`   
 
+To start up the PostgreSQL database in a docker container:
+`docker-compose up`
+
 It should load on: http://127.0.0.1:8000/
 
 To start up our client:   
@@ -51,7 +54,17 @@ It should load on: http://localhost:8080/
 
 ## Changelog
 ### Django-API
-1. Install django - start project 'careers' and create app for 'users'   
+1. Install django - start project 'careers' and create app for 'users'
+2. Add [Django REST Framework](https://www.django-rest-framework.org/)
+3. Extend base user model with profile details
+4. Add register route
+5. Add JWT authentication via [simplejwt](https://github.com/jazzband/djangorestframework-simplejwt)
+6. Add user Applications models and views
+7. Add Rewards app and views for getting/editing rewards
+8. Add UserReward Many-Many link model that allows adding rewards to a specific user (e.g uploaded CV)
+9. Add jobs app handling fetching jobs from Reed API using an API key stored in .env
+10. Edit permissions on routes only available to users/admins
+11. Add test suite using DRF APIClient class to test endpoints
 
 ### React-Client
 1. Set up react file structure.   
