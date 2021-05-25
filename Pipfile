@@ -22,6 +22,7 @@ django-cors-headers = "*"
 boto3 = "*"
 django-storages = "*"
 django-environ = "*"
+coverage = "*"
 
 [dev-packages]
 autopep8 = "*"
@@ -31,3 +32,5 @@ python_version = "3.9.5"
 
 [scripts]
 dev = "python manage.py runserver"
+coverage = "coverage run --source='.' manage.py test"
+report = "coverage report"

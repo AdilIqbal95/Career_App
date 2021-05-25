@@ -55,14 +55,12 @@ class ApplicationViewSet(viewsets.ModelViewSet):
     """
 
     def get_queryset(self):
-        print(Application.objects.filter(user=self.kwargs['user_pk']))
         return Application.objects.filter(user=self.kwargs['user_pk'])
 
     def perform_create(self, serializer):
         """
             Add reward to user and update their points
         """
-        print(self.kwargs['user_pk'])
         user = get_object_or_404(User, pk=self.kwargs['user_pk'])
         serializer.save(user=user)
 

@@ -1,0 +1,52 @@
+[
+    {
+        "model": "users.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$260000$bC1VPmE4itL6gAESkWYOsP$RaBRYO8YauQEfNUaXsFlZKGoVaKvj2sbKizXTsxWhU8=",
+            "last_login": "2021-05-19T16:12:43.193Z",
+            "is_superuser": true,
+            "username": "duck",
+            "first_name": "",
+            "last_name": "",
+            "email": "duck@duck.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2021-05-19T16:11:52.332Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.application",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "job_title": "Noodle Farmer",
+            "company": "Noodle Farming inc.",
+            "description": "Blah blah",
+            "url": "https://consoul-log.netlify.app/",
+            "saved": true,
+            "applied": true,
+            "interviewed": false,
+            "offered": false,
+            "accepted": false
+        }
+    },
+    {
+        "model": "users.application",
+        "pk": 2,
+        "fields": {
+            "user": 1,
+            "job_title": "Temp Monster",
+            "company": "Shiver Me Bones",
+            "description": "Boo!",
+            "url": "https://scare.me",
+            "saved": false,
+            "applied": false,
+            "interviewed": false,
+            "offered": false,
+            "accepted": false
+        }
+    }
+]
